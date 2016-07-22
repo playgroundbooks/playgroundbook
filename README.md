@@ -2,7 +2,7 @@
 
 # playground-book-lint
 
-Linter for Swift Playground books based on [Apple's documentation](https://developer.apple.com/library/prerelease/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/index.html#//apple_ref/doc/uid/TP40017343-CH47-SW4). It's a work in progress (see [issues](https://github.com/ashfurrow/playground-book-lint/issues)).
+Linter for Swift Playground books based on [Apple's documentation](https://developer.apple.com/library/prerelease/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/index.html#//apple_ref/doc/uid/TP40017343-CH47-SW4). It's a work in progress (see [issues](https://github.com/ashfurrow/playground-book-lint/issues)) but you can use it now.
 
 ## Installation
 
