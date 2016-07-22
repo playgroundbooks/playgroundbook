@@ -3,6 +3,11 @@ require 'playground_book_lint/page_linter'
 
 module PlaygroundBookLint
   class ChapterManifestLinter < ManifestLinter
+    attr_accessor :page_linter
+
+    def initialize(page_linter = PageLinter.new())
+      @page_linter = page_linter
+    end
 
     def lint
       super()
@@ -15,7 +20,7 @@ module PlaygroundBookLint
           fail_lint "Chapter page directory #{page_directory_name} missing in #{Dir.pwd}" unless Dir.exist?(page_directory_name)
           
           Dir.chdir page_directory_name do
-            PageLinter.new().lint()
+            page_linter.lint()
           end
         end
       end

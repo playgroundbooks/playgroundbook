@@ -30,6 +30,7 @@ module PlaygroundBookLint
       allow(linter).to receive(:contents_dir_exists?)
         .and_return(true)
       allow(contents_linter).to receive(:lint)
+      expect(Dir).to receive(:chdir).with(test_playground_book)
 
       linter.lint()
     end
