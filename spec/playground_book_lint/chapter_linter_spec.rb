@@ -21,8 +21,7 @@ module PlaygroundBookLint
     it 'calls through to chapter manifest linter' do
       FakeFS do
        expect(chapter_manifest_linter).to receive(:lint)
-        Dir.mkdir(chapter_directory_name)
-        Dir.mkdir(chapter_directory_name + '/Pages')
+        FileUtils.mkdir_p("#{chapter_directory_name}/Pages")
 
         expect{ chapter_linter.lint(chapter_directory_name) }.to_not raise_error
       end
