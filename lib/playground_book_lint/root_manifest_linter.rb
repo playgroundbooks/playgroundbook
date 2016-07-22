@@ -4,6 +4,12 @@ require 'playground_book_lint/chapter_linter'
 
 module PlaygroundBookLint
   class RootManifestLinter < ManifestLinter
+    attr_accessor :chapter_linter
+
+    def initialize(chapter_linter = ChapterLinter.new())
+      @chapter_linter = chapter_linter
+    end
+    
     def lint
       super()
       
@@ -13,7 +19,7 @@ module PlaygroundBookLint
       # Go into Chapters/ and then each chapter directory, then lint it.
       Dir.chdir 'Chapters' do
         manifest_plist_contents['Chapters'].each do |chapter_directory_name|
-          ChapterLinter.new(chapter_directory_name).lint()
+          chapter_linter.lint(chapter_directory_name)
         end
       end
     end

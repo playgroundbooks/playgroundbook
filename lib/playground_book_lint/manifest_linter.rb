@@ -6,9 +6,11 @@ module PlaygroundBookLint
 
   class ManifestLinter < AbstractLinter
 
+    #TODO: Should load manifest file in initialize instead of lazily.
+
     def lint
       fail_lint "No Manifest file in #{Dir.pwd}" unless manifest_file_exists?
-      fail_lint "Manifest file missing name in #{Dir.pwd}" unless has_name?
+      fail_lint "Manifest file missing Name in #{Dir.pwd}" unless has_name?
     end
 
     def manifest_file_exists?
