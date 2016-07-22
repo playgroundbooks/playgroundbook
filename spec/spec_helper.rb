@@ -12,6 +12,7 @@ require 'playground_book_lint'
 require 'playground_book_lint/abstract_linter'
 require 'playground_book_lint/root_manifest_linter'
 require 'playground_book_lint/chapter_linter'
+require 'playground_book_lint/chapter_manifest_linter'
 
 RSpec.configure do |config|
   config.color = true

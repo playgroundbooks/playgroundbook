@@ -6,8 +6,10 @@ module PlaygroundBookLint
   PAGES_DIRECTORY_NAME = 'Pages'
   
   class ChapterLinter < AbstractLinter
+    attr_accessor :chapter_manifest_linter
 
-    def initialize()
+    def initialize(chapter_manifest_linter = ChapterManifestLinter.new())
+      @chapter_manifest_linter = chapter_manifest_linter
     end
 
     def lint(chapter_directory_name)
@@ -16,7 +18,7 @@ module PlaygroundBookLint
       Dir.chdir chapter_directory_name do
         fail_lint "Pages directory in chapter does not exist: #{chapter_directory_name}." unless pages_directory_exists?
 
-        ChapterManifestLinter.new().lint()
+        chapter_manifest_linter.lint()
       end
     end
 
