@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
   s.executables = ['playground_book_lint']
   s.add_runtime_dependency 'plist', '~> 3.2'
   s.add_runtime_dependency 'colored', '~> 1.2'
+  s.add_runtime_dependency 'cork', '~> 0.1'
 end
