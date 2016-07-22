@@ -7,5 +7,6 @@ gem 'mocha'
 gem 'bacon'
 gem 'mocha-on-bacon'
 gem 'prettybacon'
+gem 'fakefs'
 
 gemspec
