@@ -3,19 +3,19 @@ require 'cork'
 
 module PlaygroundBookLint
   class AbstractLinter
-    @@ui = Cork::Board.new
+    @ui = Cork::Board.new
 
-    def self.ui=(value)
-      @@ui = value
+    class << self
+      attr_accessor :ui
     end
 
     def fail_lint(msg)
-      @@ui.puts msg.red
+      AbstractLinter.ui.puts msg.red
       exit 1
     end
 
     def message(msg)
-      @@ui.puts msg
+      AbstractLinter.ui.puts msg
     end
   end
 end
