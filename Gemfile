@@ -6,5 +6,6 @@ gem 'bacon'
 gem 'mocha-on-bacon'
 gem 'prettybacon'
 gem 'fakefs'
+gem 'rubocop', '~> 0.41.2', require: false
 
 gemspec
