@@ -2,11 +2,10 @@ require 'plist'
 require 'playground_book_lint/abstract_linter'
 
 module PlaygroundBookLint
-  MANIFEST_FILE_NAME = 'Manifest.plist'
+  MANIFEST_FILE_NAME = 'Manifest.plist'.freeze
 
   class ManifestLinter < AbstractLinter
-
-    #TODO: Should load manifest file in initialize instead of lazily.
+    # TODO: Should load manifest file in initialize instead of lazily.
 
     def lint
       fail_lint "No Manifest file in #{Dir.pwd}" unless manifest_file_exists?
@@ -14,14 +13,14 @@ module PlaygroundBookLint
     end
 
     def manifest_file_exists?
-      return File.exists? MANIFEST_FILE_NAME
+      File.exist? MANIFEST_FILE_NAME
     end
 
     def manifest_plist_contents
       return @manifest_plist_contents unless @manifest_plist_contents.nil?
       require 'plist'
-      @manifest_plist_contents = Plist::parse_xml(MANIFEST_FILE_NAME)
-      return @manifest_plist_contents
+      @manifest_plist_contents = Plist.parse_xml(MANIFEST_FILE_NAME)
+      @manifest_plist_contents
     end
 
     def has_name?
@@ -32,7 +31,7 @@ module PlaygroundBookLint
       return false if manifest_plist_contents.nil?
       return false if manifest_plist_contents[key].nil?
       return false if manifest_plist_contents[key].empty?
-      return true
+      true
     end
   end
 end

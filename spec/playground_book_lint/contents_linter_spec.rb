@@ -11,7 +11,7 @@ module PlaygroundBookLint
 
       FakeFS do
         Dir.mkdir 'Contents'
-        contents_linter.lint()
+        contents_linter.lint
       end
     end
   end

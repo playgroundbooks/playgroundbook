@@ -3,11 +3,11 @@
 playground_file_name = ARGV.first
 
 unless playground_file_name
-  puts "You must specify a playground file name."
+  puts 'You must specify a playground file name.'
   exit 1
 end
 
 require 'playground_book_lint'
 
 linter = PlaygroundBookLint::Linter.new(playground_file_name)
-linter.lint()
+linter.lint

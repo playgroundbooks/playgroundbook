@@ -5,7 +5,7 @@ module PlaygroundBookLint
   class PageManifestLinter < ManifestLinter
     def lint
       super()
-        # TODO: Check for valid LiveViewMode values.
+      # TODO: Check for valid LiveViewMode values.
     end
   end
 end
