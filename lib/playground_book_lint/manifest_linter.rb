@@ -9,7 +9,7 @@ module PlaygroundBookLint
 
     def lint
       fail_lint "No Manifest file in #{Dir.pwd}" unless manifest_file_exists?
-      fail_lint "Manifest file missing Name in #{Dir.pwd}" unless has_name?
+      fail_lint "Manifest file missing Name in #{Dir.pwd}" unless name?
     end
 
     def manifest_file_exists?
@@ -23,7 +23,7 @@ module PlaygroundBookLint
       @manifest_plist_contents
     end
 
-    def has_name?
+    def name?
       value_defined_in_manifest?('Name')
     end
 
