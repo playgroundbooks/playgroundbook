@@ -4,6 +4,7 @@ require 'playground_book_lint/contents_linter'
 require 'pathname'
 
 module PlaygroundBookLint
+  # A linter for verifying a playground book
   class Linter < AbstractLinter
     attr_accessor :playground_file_name
     attr_accessor :contents_linter

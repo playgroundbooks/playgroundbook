@@ -2,6 +2,7 @@ require 'playground_book_lint/manifest_linter'
 require 'playground_book_lint/page_linter'
 
 module PlaygroundBookLint
+  # A linter for verifying the contents of a chapter's Manifest.plist
   class ChapterManifestLinter < ManifestLinter
     attr_accessor :page_linter
 

@@ -4,6 +4,8 @@ require 'playground_book_lint/abstract_linter'
 module PlaygroundBookLint
   MANIFEST_FILE_NAME = 'Manifest.plist'.freeze
 
+  # A base inplementation of a linter for verifying the contents of manifest
+  # files.
   class ManifestLinter < AbstractLinter
     # TODO: Should load manifest file in initialize instead of lazily.
 

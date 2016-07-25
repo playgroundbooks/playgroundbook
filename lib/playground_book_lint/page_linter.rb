@@ -4,6 +4,7 @@ require 'playground_book_lint/page_manifest_linter'
 module PlaygroundBookLint
   CONTENTS_SWIFT_FILE_NAME = 'Contents.swift'.freeze
 
+  # A linter for verifying the contents of a page directory
   class PageLinter < AbstractLinter
     attr_accessor :page_manifest_linter
 

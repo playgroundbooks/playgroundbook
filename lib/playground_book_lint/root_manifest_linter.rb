@@ -3,6 +3,7 @@ require 'playground_book_lint/manifest_linter'
 require 'playground_book_lint/chapter_linter'
 
 module PlaygroundBookLint
+  # A linter for verifying the contents of a playground book's root manifest
   class RootManifestLinter < ManifestLinter
     attr_accessor :chapter_linter
 

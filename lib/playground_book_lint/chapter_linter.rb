@@ -5,6 +5,7 @@ require 'playground_book_lint/chapter_manifest_linter'
 module PlaygroundBookLint
   PAGES_DIRECTORY_NAME = 'Pages'.freeze
 
+  # A linter for verifying a chapter directory
   class ChapterLinter < AbstractLinter
     attr_accessor :chapter_manifest_linter
 
