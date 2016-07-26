@@ -1,13 +1,15 @@
 require 'playground_book_lint/manifest_linter'
 require 'playground_book_lint/page_linter'
+require 'playground_book_lint/cutscene_page_linter'
 
 module PlaygroundBookLint
   # A linter for verifying the contents of a chapter's Manifest.plist
   class ChapterManifestLinter < ManifestLinter
-    attr_accessor :page_linter
+    attr_accessor :page_linter, :cutscene_page_linter
 
-    def initialize(page_linter = PageLinter.new)
+    def initialize(page_linter = PageLinter.new, cutscene_page_linter = CutscenePageLinter.new)
       @page_linter = page_linter
+      @cutscene_page_linter = cutscene_page_linter
     end
 
     def lint
@@ -19,10 +21,17 @@ module PlaygroundBookLint
         # All pages exist inside the /Pages subdirectory, we need to chdir to there first.
         Dir.chdir PAGES_DIRECTORY_NAME do
           fail_lint "Chapter page directory #{page_directory_name} missing in #{Dir.pwd}" unless Dir.exist?(page_directory_name)
+          lint_page page_directory_name
+        end
+      end
+    end
 
-          Dir.chdir page_directory_name do
-            page_linter.lint
-          end
+    def lint_page(page_directory_name)
+      Dir.chdir page_directory_name do
+        if page_directory_name =~ /.+\.playgroundpage$/
+          page_linter.lint
+        elsif page_directory_name =~ /.+\.cutscenepage$/
+          cutscene_page_linter.lint
         end
       end
     end
