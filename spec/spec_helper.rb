@@ -18,7 +18,6 @@ require 'playground_book_lint/page_linter'
 require 'playground_book_lint/page_manifest_linter'
 require 'playground_book_lint/root_manifest_linter'
 
-
 RSpec.configure do |config|
   config.color = true
 

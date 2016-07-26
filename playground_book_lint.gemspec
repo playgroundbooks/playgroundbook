@@ -7,13 +7,13 @@ Gem::Specification.new do |s|
   s.name        = 'playground-book-lint'
   s.version     = PlaygroundBookLint::VERSION
   s.licenses    = ['MIT']
-  s.summary     = "Lints Swift Playground books."
-  s.description	= "Lints books for Swift Playgrounds on iOS"
-  s.authors     = ["Ash Furrow"]
+  s.summary     = 'Lints Swift Playground books.'
+  s.description	= 'Lints books for Swift Playgrounds on iOS'
+  s.authors     = ['Ash Furrow']
   s.homepage	= 'https://github.com/ashfurrow/playground-book-lint'
   s.email       = 'ash@ashfurrow.com'
-  s.files       = `git ls-files`.split($/)
-  s.require_paths = ["lib"]
+  s.files       = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
+  s.require_paths = ['lib']
   s.executables = ['playground_book_lint']
   s.add_runtime_dependency 'plist', '~> 3.2'
   s.add_runtime_dependency 'colored', '~> 1.2'

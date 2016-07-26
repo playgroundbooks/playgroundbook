@@ -2,20 +2,22 @@ require 'colored'
 require 'cork'
 
 module PlaygroundBookLint
+  # AbstractLinter provides a base implementation of a linter which a concrete
+  # linter subclass can inherit from
   class AbstractLinter
-    @@ui = Cork::Board.new()
+    @ui = Cork::Board.new
 
-   def self.ui=(value)
-     @@ui = value
-   end
+    class << self
+      attr_accessor :ui
+    end
 
     def fail_lint(msg)
-      @@ui.puts msg.red
+      AbstractLinter.ui.puts msg.red
       exit 1
     end
 
     def message(msg)
-      @@ui.puts msg
+      AbstractLinter.ui.puts msg
     end
   end
 end

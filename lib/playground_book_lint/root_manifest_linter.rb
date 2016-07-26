@@ -3,19 +3,20 @@ require 'playground_book_lint/manifest_linter'
 require 'playground_book_lint/chapter_linter'
 
 module PlaygroundBookLint
+  # A linter for verifying the contents of a playground book's root manifest
   class RootManifestLinter < ManifestLinter
     attr_accessor :chapter_linter
 
-    def initialize(chapter_linter = ChapterLinter.new())
+    def initialize(chapter_linter = ChapterLinter.new)
       @chapter_linter = chapter_linter
     end
-    
+
     def lint
       super()
-      
-      fail_lint "No Chapters directory" unless chapters_directory_exist?
-      fail_lint "No Chapters specified" unless chapters_exist?
-      
+
+      fail_lint 'No Chapters directory' unless chapters_directory_exist?
+      fail_lint 'No Chapters specified' unless chapters_exist?
+
       # Go into Chapters/ and then each chapter directory, then lint it.
       Dir.chdir 'Chapters' do
         manifest_plist_contents['Chapters'].each do |chapter_directory_name|
@@ -25,7 +26,7 @@ module PlaygroundBookLint
     end
 
     def chapters_directory_exist?
-      return Dir.exist? 'Chapters'
+      Dir.exist? 'Chapters'
     end
 
     def chapters_exist?
