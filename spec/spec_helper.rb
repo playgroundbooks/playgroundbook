@@ -16,6 +16,8 @@ require 'playground_book_lint/contents_linter'
 require 'playground_book_lint/manifest_linter'
 require 'playground_book_lint/page_linter'
 require 'playground_book_lint/page_manifest_linter'
+require 'playground_book_lint/cutscene_page_linter'
+require 'playground_book_lint/cutscene_page_manifest_linter'
 require 'playground_book_lint/root_manifest_linter'
 
 RSpec.configure do |config|
