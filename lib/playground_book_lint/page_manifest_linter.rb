@@ -4,9 +4,15 @@ require 'playground_book_lint/manifest_linter'
 module PlaygroundBookLint
   # A linter for verifying the contents of a page's Manifest.plist
   class PageManifestLinter < ManifestLinter
+    SUPPORTED_LIVE_VIEW_MODES = ['VisibleByDefault', 'HiddenByDefault']
+
     def lint
       super()
-      # TODO: Check for valid LiveViewMode values.
+
+      live_view_mode = manifest_plist_contents['LiveViewMode']
+      unless live_view_mode.nil?
+        fail_lint "Unsopported LiveViewMoode '#{live_view_mode}'" unless SUPPORTED_LIVE_VIEW_MODES.include? live_view_mode
+      end
     end
   end
 end
