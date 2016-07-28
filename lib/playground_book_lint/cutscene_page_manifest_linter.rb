@@ -6,6 +6,8 @@ module PlaygroundBookLint
     attr_accessor :page_manifest_linter
 
     def lint
+      super()
+
       # Cutscene references should point to an existent HTML file
       cutscene_reference = manifest_plist_contents['CutsceneReference']
       fail_lint "Cutscene manifest doesn't reference a cutscene file" if cutscene_reference.nil?
