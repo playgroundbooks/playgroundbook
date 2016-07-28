@@ -23,7 +23,7 @@ module PlaygroundBookLint
           }.to_plist
           File.open('Manifest.plist', 'w') { |f| f.write(plist) }
 
-          expect { cutscene_page_manifest_linter.lint }.to raise_error "Cutscene file at 'FakeFile.html' doesn't exist"
+          expect { cutscene_page_manifest_linter.lint }.to raise_error(SystemExit)
         end
       end
 
@@ -37,7 +37,7 @@ module PlaygroundBookLint
           File.open('Manifest.plist', 'w') { |f| f.write(plist) }
           File.open(cutscene_reference, 'w')
 
-          expect { cutscene_page_manifest_linter.lint }.to raise_error "Cutscene file at '#{cutscene_reference}' must be HTML"
+          expect { cutscene_page_manifest_linter.lint }.to raise_error(SystemExit)
         end
       end
 
