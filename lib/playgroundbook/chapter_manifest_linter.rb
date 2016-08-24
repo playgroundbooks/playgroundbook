@@ -1,8 +1,8 @@
-require 'playground_book_lint/manifest_linter'
-require 'playground_book_lint/page_linter'
-require 'playground_book_lint/cutscene_page_linter'
+require 'playgroundbook/manifest_linter'
+require 'playgroundbook/page_linter'
+require 'playgroundbook/cutscene_page_linter'
 
-module PlaygroundBookLint
+module Playgroundbook
   # A linter for verifying the contents of a chapter's Manifest.plist
   class ChapterManifestLinter < ManifestLinter
     attr_accessor :page_linter, :cutscene_page_linter

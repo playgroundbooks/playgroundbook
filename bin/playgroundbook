@@ -11,7 +11,7 @@ file_name = ARGV[1]
 
 if command == 'lint'
   # require 'playgroundbook_lint'
-  # PlaygroundBookLint::Linter.new(file_name).lint
+  # Playgroundbook::Linter.new(file_name).lint
 elsif command == 'render'
   # require 'playgroundbook_render'
   # Playgroundbook::Renderer.new(file_name).render

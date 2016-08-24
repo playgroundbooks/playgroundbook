@@ -1,7 +1,7 @@
-require 'playground_book_lint/abstract_linter'
-require 'playground_book_lint/page_manifest_linter'
+require 'playgroundbook/abstract_linter'
+require 'playgroundbook/page_manifest_linter'
 
-module PlaygroundBookLint
+module Playgroundbook
   CONTENTS_SWIFT_FILE_NAME = 'Contents.swift'.freeze
 
   # A linter for verifying the contents of a page directory

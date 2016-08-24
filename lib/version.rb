@@ -1,3 +1,3 @@
-module PlaygroundBookLint
-  VERSION = '0.0.1'.freeze
+module Playgroundbook
+  VERSION = '0.1.0'.freeze
 end

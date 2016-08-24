@@ -1,7 +1,7 @@
 require 'plist'
-require 'playground_book_lint/manifest_linter'
+require 'playgroundbook/manifest_linter'
 
-module PlaygroundBookLint
+module Playgroundbook
   # A linter for verifying the contents of a page's Manifest.plist
   class PageManifestLinter < ManifestLinter
     SUPPORTED_LIVE_VIEW_MODES = %w(VisibleByDefault HiddenByDefault).freeze

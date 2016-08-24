@@ -1,6 +1,6 @@
 require File.expand_path('../../spec_helper', __FILE__)
 
-module PlaygroundBookLint
+module Playgroundbook
   describe RootManifestLinter do
     include FakeFS::SpecHelpers
     let(:root_manifest_linter) { RootManifestLinter.new(chapter_linter) }

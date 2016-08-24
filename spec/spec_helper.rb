@@ -8,17 +8,17 @@ ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 $LOAD_PATH.unshift((ROOT + 'lib').to_s)
 $LOAD_PATH.unshift((ROOT + 'spec').to_s)
 
-require 'playground_book_lint'
-require 'playground_book_lint/abstract_linter'
-require 'playground_book_lint/chapter_linter'
-require 'playground_book_lint/chapter_manifest_linter'
-require 'playground_book_lint/contents_linter'
-require 'playground_book_lint/manifest_linter'
-require 'playground_book_lint/page_linter'
-require 'playground_book_lint/page_manifest_linter'
-require 'playground_book_lint/cutscene_page_linter'
-require 'playground_book_lint/cutscene_page_manifest_linter'
-require 'playground_book_lint/root_manifest_linter'
+require 'playgroundbook_lint'
+require 'playgroundbook/abstract_linter'
+require 'playgroundbook/chapter_linter'
+require 'playgroundbook/chapter_manifest_linter'
+require 'playgroundbook/contents_linter'
+require 'playgroundbook/manifest_linter'
+require 'playgroundbook/page_linter'
+require 'playgroundbook/page_manifest_linter'
+require 'playgroundbook/cutscene_page_linter'
+require 'playgroundbook/cutscene_page_manifest_linter'
+require 'playgroundbook/root_manifest_linter'
 
 RSpec.configure do |config|
   config.color = true
@@ -31,4 +31,4 @@ def test_playground_book
   'spec/fixtures/Starter.playgroundbook'
 end
 
-PlaygroundBookLint::AbstractLinter.ui = Cork::Board.new(silent: true)
+Playgroundbook::AbstractLinter.ui = Cork::Board.new(silent: true)

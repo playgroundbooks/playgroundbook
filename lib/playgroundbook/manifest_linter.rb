@@ -1,7 +1,7 @@
 require 'plist'
-require 'playground_book_lint/abstract_linter'
+require 'playgroundbook/abstract_linter'
 
-module PlaygroundBookLint
+module Playgroundbook
   MANIFEST_FILE_NAME = 'Manifest.plist'.freeze
 
   # A base inplementation of a linter for verifying the contents of manifest

@@ -13,7 +13,7 @@ Linter for Swift Playground books based on [Apple's documentation](https://devel
 ## Usage
 
 ```sh
-> playground-book-lint MyPlaygroundBook.playgroundbook
+> playground-book-lint MyPlaygroundbook.playgroundbook
 ```
 
 ## License
