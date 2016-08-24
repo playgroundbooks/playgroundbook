@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+unless ARGV.length >= 2
+  puts 'You must specify either lint or render. Example usage:'
+  puts '  playgroundbook [lint|render] file_name'
+  exit 1
+end
+
+command = ARGV[0]
+file_name = ARGV[1]
+
+if command == 'lint'
+  # require 'playgroundbook_lint'
+  # PlaygroundBookLint::Linter.new(file_name).lint
+elsif command == 'render'
+  # require 'playgroundbook_render'
+  # Playgroundbook::Renderer.new(file_name).render
+else
+  puts "Unknown command: #{command}"
+  exit 1
+end
+
