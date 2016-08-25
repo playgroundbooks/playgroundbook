@@ -33,4 +33,12 @@ def test_playground_book
   'spec/fixtures/Starter.playgroundbook'
 end
 
+def test_book_metadata
+  {
+    'name' => 'Testing Book',
+    'chapters' => ['test_chapter'],
+    'identifier' => 'com.ashfurrow.testing'
+  }
+end
+
 Playgroundbook::AbstractLinter.ui = Cork::Board.new(silent: true)

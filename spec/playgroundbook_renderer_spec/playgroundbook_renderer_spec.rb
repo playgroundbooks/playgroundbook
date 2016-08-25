@@ -1,7 +1,7 @@
 require File.expand_path('../../spec_helper', __FILE__)
 
 module Playgroundbook
-  describe Linter do
+  describe Renderer do
     include FakeFS::SpecHelpers
     let(:renderer) { Renderer.new(yaml_file_name, contents_manifest_generator, test_ui) }
     let(:yaml_file_name) { 'book.yml' }
@@ -10,10 +10,7 @@ module Playgroundbook
 
     before do
       File.open(yaml_file_name, 'w') do |file|
-        file.write({
-          'name' => 'Testing Book',
-          'chapters' => ['test_chapter']
-        }.to_yaml)
+        file.write(test_book_metadata.to_yaml)
       end
 
       allow(contents_manifest_generator).to receive(:generate!)

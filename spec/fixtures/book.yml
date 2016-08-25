@@ -1,3 +1,4 @@
 name: Testing book
 chapters:
   - test_chapter
+identifier: com.ashfurrow.example
