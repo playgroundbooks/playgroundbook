@@ -1,5 +1,5 @@
-require 'playgroundbook/abstract_linter'
-require 'playgroundbook/page_manifest_linter'
+require 'playgroundbook_lint/abstract_linter'
+require 'playgroundbook_lint/page_manifest_linter'
 
 module Playgroundbook
   CONTENTS_SWIFT_FILE_NAME = 'Contents.swift'.freeze

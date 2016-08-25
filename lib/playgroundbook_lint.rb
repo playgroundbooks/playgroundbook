@@ -1,6 +1,6 @@
 require 'colored'
-require 'playgroundbook/abstract_linter'
-require 'playgroundbook/contents_linter'
+require 'playgroundbook_lint/abstract_linter'
+require 'playgroundbook_lint/contents_linter'
 require 'pathname'
 
 module Playgroundbook
