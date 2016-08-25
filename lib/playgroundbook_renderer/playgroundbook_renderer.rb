@@ -1,5 +1,6 @@
 require 'colored'
 require 'pathname'
+require 'yaml'
 
 module Playgroundbook
   # A renderer for playground books.

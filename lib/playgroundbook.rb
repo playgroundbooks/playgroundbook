@@ -1,2 +1,2 @@
-require 'playgroundbook_lint'
-require 'playgroundbook_renderer'
+require 'playgroundbook_lint/playgroundbook_lint'
+require 'playgroundbook_renderer/playgroundbook_renderer'
