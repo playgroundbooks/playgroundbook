@@ -14,7 +14,7 @@ require 'playgroundbook'
 if command == 'lint'
   Playgroundbook::Linter.new(file_name).lint
 elsif command == 'render'
-  Playgroundbook::Renderer.new(file_name).render
+  Playgroundbook::Renderer.new(file_name).render!
 else
   puts "Unknown command: #{command}"
   exit 1

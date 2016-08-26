@@ -1,4 +1,5 @@
 require 'plist'
+require 'playgroundbook_renderer/page_writer'
 
 module Playgroundbook
   SharedSourcesDirectoryName = 'Sources'
