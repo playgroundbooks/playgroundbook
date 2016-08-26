@@ -16,14 +16,10 @@ module Playgroundbook
       # And assets. Let's make that book-wide for simplicity.
 
       pages = parse_pages(chapter_file_contents)
-
-      puts pages
       
       pages[:page_names].each_with_index do |page_name, index|
         page_contents = pages[:page_contents][index]
         page_dir_name = pages[:page_dir_names][index]
-
-        puts page_contents
 
         @page_writer.write_page!(page_name, page_dir_name, page_contents)
       end

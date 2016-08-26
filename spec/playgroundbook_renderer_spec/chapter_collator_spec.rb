@@ -20,18 +20,16 @@ module Playgroundbook
     end
 
     context 'the chapter manifest' do
-      let(:manifest) { Plist.parse_xml(ManifestFileName) }
-
       before do
         collator.collate!(chapter_name, chapter_contents)
       end
 
       it 'has the correct name' do
-        expect(manifest['Name']).to eq(chapter_name)
+        expect(get_manifest['Name']).to eq(chapter_name)
       end
 
       it 'has the correct pages' do
-        expect(manifest['Pages']).to eq([
+        expect(get_manifest['Pages']).to eq([
           'Page 1.playgroundpage', 
           'Page 2.playgroundpage',
         ])

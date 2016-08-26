@@ -30,6 +30,7 @@ RSpec.configure do |config|
   config.order = :random
   Kernel.srand config.seed
 end
+RSpec::Expectations.configuration.on_potential_false_positives = :nothing
 
 Playgroundbook::AbstractLinter.ui = Cork::Board.new(silent: true)
 
@@ -43,6 +44,10 @@ def test_book_metadata
     'chapters' => ['test_chapter'],
     'identifier' => 'com.ashfurrow.testing'
   }
+end
+
+def get_manifest(file_name = Playgroundbook::ManifestFileName)
+  Plist.parse_xml(file_name)
 end
 
 def test_chapter_contents
