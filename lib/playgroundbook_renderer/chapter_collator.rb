@@ -18,17 +18,24 @@ module Playgroundbook
       # Oh, and write the shared preamble. ALSO DONE.
       # And assets. Let's make that book-wide for simplicity. DONE.
 
-      pages = parse_pages(chapter_file_contents)
-      
-      pages[:page_names].each_with_index do |page_name, index|
-        page_contents = pages[:page_contents][index]
-        page_dir_name = pages[:page_dir_names][index]
+      chater_directory_name = "#{chapter_name}.playgroundchapter"
+      Dir.mkdir(chater_directory_name) unless Dir.exist?(chater_directory_name)
+      Dir.chdir(chater_directory_name) do
+        pages = parse_pages(chapter_file_contents)
+        
+        Dir.mkdir(PagesDirectoryName) unless Dir.exist?(PagesDirectoryName)
+        Dir.chdir(PagesDirectoryName) do
+          pages[:page_names].each_with_index do |page_name, index|
+            page_contents = pages[:page_contents][index]
+            page_dir_name = pages[:page_dir_names][index]
 
-        @page_writer.write_page!(page_name, page_dir_name, page_contents)
+            @page_writer.write_page!(page_name, page_dir_name, page_contents)
+          end
+        end
+
+        write_chapter_manifest!(chapter_name, pages[:page_dir_names])
+        write_preamble!(pages[:preamble])
       end
-
-      write_chapter_manifest!(chapter_name, pages[:page_dir_names])
-      write_preamble!(pages[:preamble])
     end
 
     def parse_pages(swift)

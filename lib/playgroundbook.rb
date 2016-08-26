@@ -5,4 +5,5 @@ module Playgroundbook
   ManifestFileName = 'Manifest.plist'.freeze
   ContentsSwiftFileName = 'Contents.swift'.freeze
   ResourcesDirectoryName = 'Resources'.freeze
+  PagesDirectoryName = 'Pages'.freeze
 end

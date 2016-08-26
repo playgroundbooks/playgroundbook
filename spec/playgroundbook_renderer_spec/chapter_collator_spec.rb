@@ -16,7 +16,7 @@ module Playgroundbook
     it 'creates a chapter manifest' do
       collator.collate!(chapter_name, chapter_contents)
 
-      expect(File.exist?(ManifestFileName)).to be_truthy
+      expect(File.exist?("#{chapter_name}.playgroundchapter/#{ManifestFileName}")).to be_truthy
     end
 
     context 'the chapter manifest' do
@@ -25,11 +25,11 @@ module Playgroundbook
       end
 
       it 'has the correct name' do
-        expect(get_manifest['Name']).to eq(chapter_name)
+        expect(get_manifest("#{chapter_name}.playgroundchapter/#{ManifestFileName}")['Name']).to eq(chapter_name)
       end
 
       it 'has the correct pages' do
-        expect(get_manifest['Pages']).to eq([
+        expect(get_manifest("#{chapter_name}.playgroundchapter/#{ManifestFileName}")['Pages']).to eq([
           'Page 1.playgroundpage', 
           'Page 2.playgroundpage',
         ])
@@ -53,16 +53,16 @@ module Playgroundbook
       end
 
       it 'creates a Source directory if one does not exist' do
-        expect(Dir.exist?(SharedSourcesDirectoryName)).to be_truthy
+        expect(Dir.exist?("#{chapter_name}.playgroundchapter/#{SharedSourcesDirectoryName}")).to be_truthy
       end
 
       context 'Sources folder' do
         it 'has a Preamble.swift file' do
-          expect(File.exist?("#{SharedSourcesDirectoryName}/#{PreambleFileName}")).to be_truthy
+          expect(File.exist?("#{chapter_name}.playgroundchapter/#{SharedSourcesDirectoryName}/#{PreambleFileName}")).to be_truthy
         end
 
         it 'has the correct preamble contents' do
-          expect(File.read("#{SharedSourcesDirectoryName}/#{PreambleFileName}")).to eq("import UIKit\n\nvar str = \"Hello, playground\"\n\nfunc sharedFunc() {\n  print(\"This should be accessible to all pages.\")\n}")
+          expect(File.read("#{chapter_name}.playgroundchapter/#{SharedSourcesDirectoryName}/#{PreambleFileName}")).to eq("import UIKit\n\nvar str = \"Hello, playground\"\n\nfunc sharedFunc() {\n  print(\"This should be accessible to all pages.\")\n}")
         end
       end  
     end

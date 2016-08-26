@@ -49,7 +49,9 @@ module Playgroundbook
           resources_dir = book['resources']
           if !(resources_dir.nil? || resources_dir.empty?)
             Dir.mkdir(ResourcesDirectoryName) unless Dir.exist?(ResourcesDirectoryName)
-            FileUtils.cp_r("../../#{resources_dir}/*", ResourcesDirectoryName)
+            Dir.glob("../../#{resources_dir}/*").each do |file|
+              FileUtils.cp(file, ResourcesDirectoryName)
+            end
           end
           @contents_manifest_generator.generate!(book)
 
