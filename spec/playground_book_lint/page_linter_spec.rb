@@ -11,7 +11,7 @@ module Playgroundbook
     end
 
     it 'passes through to page_manifest_linter' do
-      File.open(CONTENTS_SWIFT_FILE_NAME, 'w') { |f| f.write('') }
+      File.open(ContentsSwiftFileName, 'w') { |f| f.write('') }
       expect(page_manifest_linter).to receive(:lint)
       expect { page_linter.lint }.to_not raise_error
     end

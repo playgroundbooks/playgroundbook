@@ -11,13 +11,13 @@ module Playgroundbook
     end
 
     def lint
-      fail_lint "Missing #{CONTENTS_SWIFT_FILE_NAME} in #{Dir.pwd}" unless contents_swift_file_exists?
+      fail_lint "Missing #{ContentsSwiftFileName} in #{Dir.pwd}" unless contents_swift_file_exists?
 
       page_manifest_linter.lint
     end
 
     def contents_swift_file_exists?
-      File.exist? CONTENTS_SWIFT_FILE_NAME
+      File.exist? ContentsSwiftFileName
     end
   end
 end

@@ -10,7 +10,7 @@ module Playgroundbook
     def write_page!(page_name, page_dir_name, page_contents)
       Dir.mkdir(page_dir_name) unless Dir.exist?(page_dir_name)
 
-      File.open("#{page_dir_name}/#{CONTENTS_SWIFT_FILE_NAME}", 'w') do |file|
+      File.open("#{page_dir_name}/#{ContentsSwiftFileName}", 'w') do |file|
         file.write(page_contents)
       end
 
