@@ -7,7 +7,8 @@ module Playgroundbook
     let(:test_ui) { Cork::Board.new(silent: true) }
     let(:page_name) { 'test page name' }
     let(:page_dir_name) { 'test page name.playgroundpage' }
-    let(:page_contents) { '// Some swift goes here.' }
+    let(:page_contents) { "// Some swift goes here." }
+    let(:generated_page_contesnts) { "import UIKit\n\n#{page_contents}" }
 
     context 'with a pre-existing page directory' do
       before do
@@ -15,15 +16,13 @@ module Playgroundbook
       end
 
       it 'does not explode' do
-        page_writer.write_page!(page_name, page_dir_name, page_contents)
-
-        expect{ page_writer.write_page!(page_name, page_dir_name, page_contents) }.to_not raise_error
+        expect{ page_writer.write_page!(page_name, page_dir_name, ['UIKit'],  page_contents) }.to_not raise_error
       end
     end
 
     context 'as a consequence of writing rendering' do
       before do
-        page_writer.write_page!(page_name, page_dir_name, page_contents)
+        page_writer.write_page!(page_name, page_dir_name, ['UIKit'],  page_contents)
       end
 
       it 'creates a directory' do
@@ -39,7 +38,7 @@ module Playgroundbook
       end
 
       it 'has correct Contents.swift contents' do
-        expect(File.read("#{page_dir_name}/Contents.swift")).to eq(page_contents)
+        expect(File.read("#{page_dir_name}/Contents.swift")).to eq(generated_page_contesnts)
       end
 
       context 'the manifest' do

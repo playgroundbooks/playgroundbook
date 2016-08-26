@@ -7,13 +7,11 @@ public func sharedFunc() {
 }
 
 //// Page 1.
-import UIKit
 
 str = "Yo, it's page 1."
 sharedFunc()
 
 //// Page 2.
-import UIKit
 
 sharedFunc()
 str = "Page 2 awww yeah."

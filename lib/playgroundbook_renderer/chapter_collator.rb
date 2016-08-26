@@ -11,7 +11,7 @@ module Playgroundbook
       @ui = ui
     end
 
-    def collate!(chapter_name, chapter_file_contents)
+    def collate!(chapter_name, chapter_file_contents, imports)
       # So we need to divide the chapter_file_contents into pages, write those
       # pages & their manifests to their respective directories, and generate a
       # chapter manifest. Easy. DONE AWW YEAH.
@@ -29,7 +29,7 @@ module Playgroundbook
             page_contents = pages[:page_contents][index]
             page_dir_name = pages[:page_dir_names][index]
 
-            @page_writer.write_page!(page_name, page_dir_name, page_contents)
+            @page_writer.write_page!(page_name, page_dir_name, imports, page_contents)
           end
         end
 

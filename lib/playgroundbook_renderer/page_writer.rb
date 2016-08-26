@@ -7,11 +7,13 @@ module Playgroundbook
       @ui = ui
     end
 
-    def write_page!(page_name, page_dir_name, page_contents)
+    def write_page!(page_name, page_dir_name, imports, page_contents)
       Dir.mkdir(page_dir_name) unless Dir.exist?(page_dir_name)
 
+      contents_with_import = imports.map { |i| "import #{i}" }.join("\n") + "\n\n" + page_contents
+
       File.open("#{page_dir_name}/#{ContentsSwiftFileName}", 'w') do |file|
-        file.write(page_contents)
+        file.write(contents_with_import)
       end
 
       File.open("#{page_dir_name}/#{MANIFEST_FILE_NAME}", 'w') do |file|
