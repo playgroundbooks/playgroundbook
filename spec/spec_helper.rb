@@ -30,6 +30,8 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 end
 
+Playgroundbook::AbstractLinter.ui = Cork::Board.new(silent: true)
+
 def test_playground_book
   'spec/fixtures/Starter.playgroundbook'
 end
@@ -42,4 +44,24 @@ def test_book_metadata
   }
 end
 
-Playgroundbook::AbstractLinter.ui = Cork::Board.new(silent: true)
+def test_chapter_contents
+<<-EOSwift
+import UIKit
+
+var str = "Hello, playground"
+
+func sharedFunc() {
+  print("This should be accessible to all pages.")
+}
+
+//// Page 1
+
+str = "Yo, it's page 1."
+sharedFunc()
+
+//// Page 2
+
+sharedFunc()
+str = "Page 2 awww yeah."
+EOSwift
+end

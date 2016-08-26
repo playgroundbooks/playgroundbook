@@ -52,7 +52,7 @@ module Playgroundbook
             # Chapter file name becomes chapter name in playground book.
             book['chapters'].each_with_index do |chapter_file_name, index|
               chapter_file_contents = book_chapter_contents[index]
-              @chapter_collator.collate!(chapter_file_contents, chapter_file_name)
+              @chapter_collator.collate!(chapter_file_name, chapter_file_contents)
             end
           end
         end
