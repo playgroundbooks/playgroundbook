@@ -12,11 +12,7 @@ module Playgroundbook
     end
 
     def collate!(chapter_name, chapter_file_contents, imports)
-      # So we need to divide the chapter_file_contents into pages, write those
-      # pages & their manifests to their respective directories, and generate a
-      # chapter manifest. Easy. DONE AWW YEAH.
-      # Oh, and write the shared preamble. ALSO DONE.
-      # And assets. Let's make that book-wide for simplicity. DONE.
+      @ui.puts "Processing #{chapter_name.green}."
 
       chater_directory_name = "#{chapter_name}.playgroundchapter"
       Dir.mkdir(chater_directory_name) unless Dir.exist?(chater_directory_name)
@@ -26,6 +22,8 @@ module Playgroundbook
         Dir.mkdir(PagesDirectoryName) unless Dir.exist?(PagesDirectoryName)
         Dir.chdir(PagesDirectoryName) do
           pages[:page_names].each_with_index do |page_name, index|
+            @ui.puts "  Processing #{page_name.green}."
+
             page_contents = pages[:page_contents][index]
             page_dir_name = pages[:page_dir_names][index]
 

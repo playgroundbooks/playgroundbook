@@ -12,17 +12,19 @@ module Playgroundbook
 
       contents_with_import = imports.map { |i| "import #{i}" }.join("\n") + "\n\n" + page_contents
 
-      File.open("#{page_dir_name}/#{ContentsSwiftFileName}", 'w') do |file|
-        file.write(contents_with_import)
-      end
+      Dir.chdir(page_dir_name) do
+        File.open(ContentsSwiftFileName, 'w') do |file|
+          file.write(contents_with_import)
+        end
 
-      File.open("#{page_dir_name}/#{MANIFEST_FILE_NAME}", 'w') do |file|
-        file.write ({
-          'Name' => page_name,
-          'LiveViewMode' => 'HiddenByDefault',
-          'Version' => '1.0',
-          'ContentVersion' => '1.0',
-        }.to_plist)
+        File.open(MANIFEST_FILE_NAME, 'w') do |file|
+          file.write ({
+            'Name' => page_name,
+            'LiveViewMode' => 'HiddenByDefault',
+            'Version' => '1.0',
+            'ContentVersion' => '1.0',
+          }.to_plist)
+        end
       end
     end
   end

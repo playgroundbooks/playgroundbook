@@ -27,7 +27,7 @@ module Playgroundbook
     end
 
     def render!
-      ui.puts "Rendering #{yaml_file_name.yellow}..."
+      ui.puts "Rendering #{yaml_file_name.green}..."
       
       book = yaml_contents
       book_dir_name = "#{book['name']}.playgroundbook"
@@ -48,6 +48,7 @@ module Playgroundbook
         Dir.chdir(ContentsDirName) do
           resources_dir = book['resources']
           if !(resources_dir.nil? || resources_dir.empty?)
+            @ui.puts "Copying resource directory (#{resources_dir.green}) contents."
             Dir.mkdir(ResourcesDirectoryName) unless Dir.exist?(ResourcesDirectoryName)
             Dir.glob("../../#{resources_dir}/*").each do |file|
               FileUtils.cp(file, ResourcesDirectoryName)
