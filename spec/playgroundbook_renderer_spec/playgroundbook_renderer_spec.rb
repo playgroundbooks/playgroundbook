@@ -45,13 +45,13 @@ module Playgroundbook
       it 'creates a resources folder' do
         renderer.render!
 
-        expect(Dir.exist?('Testing Book.playgroundbook/Resources')).to be_truthy
+        expect(Dir.exist?('Testing Book.playgroundbook/Contents/Resources')).to be_truthy
       end
 
       it 'copies a resources folder contents' do
         renderer.render!
         
-        expect(File.exist?('Testing Book.playgroundbook/Resources/file.png')).to be_truthy
+        expect(File.exist?('Testing Book.playgroundbook/Contents/Resources/file.png')).to be_truthy
       end
 
       context 'within an existing playgroundbook directory' do

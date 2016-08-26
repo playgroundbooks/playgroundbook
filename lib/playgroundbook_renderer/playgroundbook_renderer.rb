@@ -44,14 +44,13 @@ module Playgroundbook
 
       Dir.mkdir(book_dir_name) unless Dir.exist?(book_dir_name)
       Dir.chdir(book_dir_name) do
-        resources_dir = book['resources']
-        if !(resources_dir.nil? || resources_dir.empty?)
-          Dir.mkdir(ResourcesDirectoryName) unless Dir.exist?(ResourcesDirectoryName)
-          FileUtils.cp_r("../#{resources_dir}/*", ResourcesDirectoryName)
-        end
-
         Dir.mkdir(ContentsDirName) unless Dir.exist?(ContentsDirName)
         Dir.chdir(ContentsDirName) do
+          resources_dir = book['resources']
+          if !(resources_dir.nil? || resources_dir.empty?)
+            Dir.mkdir(ResourcesDirectoryName) unless Dir.exist?(ResourcesDirectoryName)
+            FileUtils.cp_r("../../#{resources_dir}/*", ResourcesDirectoryName)
+          end
           @contents_manifest_generator.generate!(book)
 
           Dir.mkdir(ChaptersDirName) unless Dir.exist?(ChaptersDirName)
