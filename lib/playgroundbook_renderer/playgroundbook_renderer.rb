@@ -52,7 +52,7 @@ module Playgroundbook
 
         Dir.mkdir(ContentsDirName) unless Dir.exist?(ContentsDirName)
         Dir.chdir(ContentsDirName) do
-          @contents_manifest_generator.generate!
+          @contents_manifest_generator.generate!(book)
 
           Dir.mkdir(ChaptersDirName) unless Dir.exist?(ChaptersDirName)
           Dir.chdir(ChaptersDirName) do

@@ -3,19 +3,18 @@ require File.expand_path('../../spec_helper', __FILE__)
 module Playgroundbook
   describe ContentsManifestGenerator do
     include FakeFS::SpecHelpers
-    let(:generator) { ContentsManifestGenerator.new(book_metadata, test_ui) }
+    let(:generator) { ContentsManifestGenerator.new(test_ui) }
     let(:test_ui) { Cork::Board.new(silent: true) }
-    let(:book_metadata) { test_book_metadata }
 
     it 'creates the manifest file' do
-      generator.generate!
+      generator.generate!(test_book_metadata)
 
       expect(File.exist?('Manifest.plist')).to be_truthy
     end
 
     describe 'the manifest file' do
       before do
-        generator.generate!
+        generator.generate!(test_book_metadata)
       end
 
       it 'has a book name' do

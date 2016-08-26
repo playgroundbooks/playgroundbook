@@ -45,7 +45,6 @@ module Playgroundbook
       it 'creates a resources folder' do
         renderer.render!
 
-        puts Dir.glob 'Testing Book.playgroundbook/Resources/*'
         expect(Dir.exist?('Testing Book.playgroundbook/Resources')).to be_truthy
       end
 
