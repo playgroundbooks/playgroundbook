@@ -51,6 +51,8 @@ module Playgroundbook
       manifest_contents = {
         'Name' => chapter_name,
         'Pages' => page_dir_names,
+        'Version' => '1.0',
+        'ContentVersion' => '1.0',
       }
       File.open(ManifestFileName, 'w') do |file|
         file.write(manifest_contents.to_plist)

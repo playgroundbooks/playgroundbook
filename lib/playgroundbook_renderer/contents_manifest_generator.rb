@@ -24,7 +24,9 @@ module Playgroundbook
         'Name' => book_metadata['name'],
         'ContentIdentifier' => book_metadata['identifier'],
         'DeploymentTarget' => book_metadata['deployment_target'] || 'ios10.0',
-        'Chapters' => chapters
+        'Chapters' => chapters,
+        'Version' => '1.0',
+        'ContentVersion' => '1.0',
       }
     end
   end

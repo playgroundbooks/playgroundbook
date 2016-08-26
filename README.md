@@ -30,6 +30,7 @@ The yml file should be in the following format:
 name: Testing book
 identifier: com.ashfurrow.example
 resources: assets # Optional
+deployment_target: ios10.0 # Optional
 chapters:
   - Chapter 1
   - Chapter 2

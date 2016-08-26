@@ -18,6 +18,8 @@ module Playgroundbook
         file.write ({
           'Name' => page_name,
           'LiveViewMode' => 'HiddenByDefault',
+          'Version' => '1.0',
+          'ContentVersion' => '1.0',
         }.to_plist)
       end
     end
