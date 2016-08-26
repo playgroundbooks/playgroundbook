@@ -21,6 +21,7 @@ require 'playgroundbook_lint/cutscene_page_manifest_linter'
 require 'playgroundbook_lint/root_manifest_linter'
 
 require 'playgroundbook_renderer/contents_manifest_generator'
+require 'playgroundbook_renderer/chapter_collator'
 
 RSpec.configure do |config|
   config.color = true
