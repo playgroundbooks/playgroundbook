@@ -42,5 +42,29 @@ module Playgroundbook
 
       collator.collate!(chapter_name, chapter_contents)
     end
+
+    it 'does not explode if a Source directory already exists' do
+      expect{ collator.collate!(chapter_name, chapter_contents) }.to_not raise_error
+    end
+    
+    context 'having colated' do
+      before do
+        collator.collate!(chapter_name, chapter_contents)
+      end
+
+      it 'creates a Source directory if one does not exist' do
+        expect(Dir.exist?(SharedSourcesDirectoryName)).to be_truthy
+      end
+
+      context 'Sources folder' do
+        it 'has a Preamble.swift file' do
+          expect(File.exist?("#{SharedSourcesDirectoryName}/#{PreambleFileName}")).to be_truthy
+        end
+
+        it 'has the correct preamble contents' do
+          expect(File.read("#{SharedSourcesDirectoryName}/#{PreambleFileName}")).to eq("import UIKit\n\nvar str = \"Hello, playground\"\n\nfunc sharedFunc() {\n  print(\"This should be accessible to all pages.\")\n}")
+        end
+      end  
+    end
   end
 end

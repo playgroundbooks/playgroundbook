@@ -28,6 +28,8 @@ module Playgroundbook
 
     context 'with a playground' do
       before do
+        Dir.mkdir('assets')
+        FileUtils.touch('assets/file.png')
         Dir.mkdir('test_chapter.playground/')
         File.open('test_chapter.playground/Contents.swift', 'w') do |file|
           file.write('')
@@ -38,6 +40,19 @@ module Playgroundbook
         renderer.render!
 
         expect(Dir.exist?('Testing Book.playgroundbook')).to be_truthy
+      end
+
+      it 'creates a resources folder' do
+        renderer.render!
+
+        puts Dir.glob 'Testing Book.playgroundbook/Resources/*'
+        expect(Dir.exist?('Testing Book.playgroundbook/Resources')).to be_truthy
+      end
+
+      it 'copies a resources folder contents' do
+        renderer.render!
+        
+        expect(File.exist?('Testing Book.playgroundbook/Resources/file.png')).to be_truthy
       end
 
       context 'within an existing playgroundbook directory' do
