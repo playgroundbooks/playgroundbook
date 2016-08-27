@@ -8,7 +8,7 @@ module Playgroundbook
     let(:page_name) { 'test page name' }
     let(:page_dir_name) { 'test page name.playgroundpage' }
     let(:page_contents) { "// Some swift goes here." }
-    let(:generated_page_contesnts) { "import UIKit\n\n#{page_contents}" }
+    let(:generated_page_contesnts) { "//#-hidden-code\nimport UIKit\n//#-end-hidden-code\n// Some swift goes here." }
 
     context 'with a pre-existing page directory' do
       before do
