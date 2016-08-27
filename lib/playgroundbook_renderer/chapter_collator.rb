@@ -14,9 +14,9 @@ module Playgroundbook
     def collate!(chapter_name, chapter_file_contents, imports)
       @ui.puts "Processing #{chapter_name.green}."
 
-      chater_directory_name = "#{chapter_name}.playgroundchapter"
-      Dir.mkdir(chater_directory_name) unless Dir.exist?(chater_directory_name)
-      Dir.chdir(chater_directory_name) do
+      chapter_directory_name = "#{chapter_name}.playgroundchapter"
+      Dir.mkdir(chapter_directory_name) unless Dir.exist?(chapter_directory_name)
+      Dir.chdir(chapter_directory_name) do
         pages = parse_pages(chapter_file_contents)
         
         Dir.mkdir(PagesDirectoryName) unless Dir.exist?(PagesDirectoryName)

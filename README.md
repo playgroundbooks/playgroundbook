@@ -66,7 +66,7 @@ Pages are divided by lines beginning with a quadruple slash, followed by that pa
 
 ### Limitations of Book Rendering
 
-Preamble (anything about the first `////` page) is put in its own file. That means declarations there need to be `public` to be visible within individual pages (even though when you're writing, everything is in one file). Additionally, the preamble is at the top-level and can't contain experessions. This would cause a compiler error in the Swift Playrounds iPad app:
+Preamble (anything about the first `////` page) is put in its own file. That means declarations there need to be `public` to be visible within individual pages (even though when you're writing, everything is in one file). Additionally, the preamble is at the top-level and can't contain expressions. This would cause a compiler error in the Swift Playrounds iPad app:
 
 ```swift
 public let layout = UICollectionViewFlowLayout()
