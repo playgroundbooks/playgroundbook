@@ -62,6 +62,31 @@ str = "Page 2 awww yeah."
 
 Pages are divided by lines beginning with a quadruple slash, followed by that pages name.
 
+### Limitations of Book Rendering
+
+Preamble (anything about the first `////` page) is put in its own file. That means declarations there need to be `public` to be visible within individual pages (even though when you're writing, everything is in one file). Additionally, the preamble is at the top-level and can't contain experessions. This would cause a compiler error in the Swift Playrounds iPad app:
+
+```swift
+public let layout = UICollectionViewFlowLayout()
+layout.itemSize = CGSize(width: 20, height: 20)
+```
+
+Instead, you have to wrap it in a closure, like this:
+
+```swift
+public var layout: UICollectionViewFlowLayout = {
+    let layout = UICollectionViewFlowLayout()
+    layout.itemSize = CGSize(width: 20, height: 20)
+    return layout
+}()
+```
+
+It's awkward; if you have suggestions, open an issue :+1: 
+
+Sharing resources is only available book-wide and not specific to chapters. Sharing code outside the preamble isn't supported yet.
+
+Playground books support a rich set of awesome features to make learning how to code really easy, and this tool uses almost none of them. It sacrifices this experience for the sake of being able to easily write the books on your Mac.
+
 ## License
 
 MIT, except for the `starter.playgroundbook` in the unit tests, which is licensed by Apple.
