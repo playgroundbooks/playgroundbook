@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/ashfurrow/playground-book-lint.svg?style=svg)](https://circleci.com/gh/ashfurrow/playground-book-lint)
+[![CircleCI](https://circleci.com/gh/ashfurrow/playgroundbook.svg?style=svg)](https://circleci.com/gh/ashfurrow/playgroundbook)
 
 # playgroundbook
 
