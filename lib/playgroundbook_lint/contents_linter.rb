@@ -1,7 +1,7 @@
-require 'playground_book_lint/abstract_linter'
-require 'playground_book_lint/root_manifest_linter'
+require 'playgroundbook_lint/abstract_linter'
+require 'playgroundbook_lint/root_manifest_linter'
 
-module PlaygroundBookLint
+module Playgroundbook
   # A linter for verifying the contents directory of a playground book
   class ContentsLinter < AbstractLinter
     attr_accessor :root_manfiest_linter

@@ -1,6 +1,6 @@
 require File.expand_path('../../spec_helper', __FILE__)
 
-module PlaygroundBookLint
+module Playgroundbook
   describe CutscenePageManifestLinter do
     include FakeFS::SpecHelpers
     let(:cutscene_page_manifest_linter) { CutscenePageManifestLinter.new }

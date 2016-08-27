@@ -1,8 +1,8 @@
 require 'plist'
-require 'playground_book_lint/abstract_linter'
-require 'playground_book_lint/chapter_manifest_linter'
+require 'playgroundbook_lint/abstract_linter'
+require 'playgroundbook_lint/chapter_manifest_linter'
 
-module PlaygroundBookLint
+module Playgroundbook
   PAGES_DIRECTORY_NAME = 'Pages'.freeze
 
   # A linter for verifying a chapter directory

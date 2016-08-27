@@ -1,7 +1,7 @@
-require 'playground_book_lint/abstract_linter'
-require 'playground_book_lint/cutscene_page_manifest_linter'
+require 'playgroundbook_lint/abstract_linter'
+require 'playgroundbook_lint/cutscene_page_manifest_linter'
 
-module PlaygroundBookLint
+module Playgroundbook
   # A linter for verifying cutscene pages
   class CutscenePageLinter < AbstractLinter
     attr_accessor :cutscene_page_manifest_linter

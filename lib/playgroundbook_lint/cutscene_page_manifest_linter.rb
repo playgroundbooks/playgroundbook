@@ -1,6 +1,6 @@
-require 'playground_book_lint/manifest_linter'
+require 'playgroundbook_lint/manifest_linter'
 
-module PlaygroundBookLint
+module Playgroundbook
   # A linter for verifying the contents of a cutscene page's manifest
   class CutscenePageManifestLinter < ManifestLinter
     attr_accessor :page_manifest_linter

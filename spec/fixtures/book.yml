@@ -1,0 +1,5 @@
+name: Testing book
+identifier: com.ashfurrow.example
+resources: assets
+chapters:
+  - test_chapter

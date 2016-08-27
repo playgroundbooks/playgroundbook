@@ -1,6 +1,6 @@
-require File.expand_path('../spec_helper', __FILE__)
+require File.expand_path('../../spec_helper', __FILE__)
 
-module PlaygroundBookLint
+module Playgroundbook
   describe Linter do
     let(:linter) { Linter.new(test_playground_book, contents_linter) }
     let(:contents_linter) { double(ContentsLinter) }

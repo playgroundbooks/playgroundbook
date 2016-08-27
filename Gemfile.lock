@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    playground-book-lint (0.0.1)
+    playground-book-lint (0.2.0)
       colored (~> 1.2)
       cork (~> 0.1)
       plist (~> 3.2)

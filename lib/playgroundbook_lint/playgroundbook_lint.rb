@@ -1,9 +1,9 @@
 require 'colored'
-require 'playground_book_lint/abstract_linter'
-require 'playground_book_lint/contents_linter'
+require 'playgroundbook_lint/abstract_linter'
+require 'playgroundbook_lint/contents_linter'
 require 'pathname'
 
-module PlaygroundBookLint
+module Playgroundbook
   # A linter for verifying a playground book
   class Linter < AbstractLinter
     attr_accessor :playground_file_name
