@@ -4,11 +4,11 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'version'
 
 Gem::Specification.new do |s|
-  s.name        = 'playground-book-lint'
+  s.name        = 'playgroundbook'
   s.version     = Playgroundbook::VERSION
   s.licenses    = ['MIT']
-  s.summary     = 'Lints Swift Playground books.'
-  s.description	= 'Lints books for Swift Playgrounds on iOS'
+  s.summary     = 'Lints/renders Swift Playground books.'
+  s.description	= 'Tooks for Swift Playground books on iOS, a renderer and a linter.'
   s.authors     = ['Ash Furrow']
   s.homepage	= 'https://github.com/ashfurrow/playground-book-lint'
   s.email       = 'ash@ashfurrow.com'
