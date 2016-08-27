@@ -45,14 +45,16 @@ Each chapter needs to have a corresponding playground; so `Chapter 1` requires t
 ```swift
 // This is the preamble that is shared among all the pages within this chapter.
 
-func sharedFunc() {
+public var str = "Hi!"
+
+public func sharedFunc() {
   print("This should be accessible to all pages.")
 }
 
 //// Page 1
 
-public str = "Yo, it's page 1."
-public sharedFunc()
+str = "Yo, it's page 1."
+sharedFunc()
 
 //// Page 2
 
