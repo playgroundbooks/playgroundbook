@@ -51,8 +51,8 @@ func sharedFunc() {
 
 //// Page 1
 
-str = "Yo, it's page 1."
-sharedFunc()
+public str = "Yo, it's page 1."
+public sharedFunc()
 
 //// Page 2
 
