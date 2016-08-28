@@ -45,6 +45,7 @@ def test_book_metadata
     'chapters' => ['test_chapter'],
     'identifier' => 'com.ashfurrow.testing',
     'resources' => 'assets',
+    'cover' => 'file.jpeg',
   }
 end
 
