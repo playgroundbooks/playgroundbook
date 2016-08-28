@@ -2,6 +2,10 @@
 
 - Nothing yet.
 
+# 0.2.1
+
+- Support for cover images. See [#16](https://github.com/ashfurrow/playgroundbook/issues/16).
+
 # 0.2.0
 
 - Book rendering.

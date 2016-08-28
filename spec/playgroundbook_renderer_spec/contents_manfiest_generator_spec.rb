@@ -32,6 +32,10 @@ module Playgroundbook
       it 'has chapters specified' do
         expect(get_manifest['Chapters']).to eq(['test_chapter.playgroundchapter'])
       end
+
+      it 'has a ImageReference' do
+        expect(get_manifest['ImageReference']).to eq('file.jpeg')
+      end
     end
   end
 end

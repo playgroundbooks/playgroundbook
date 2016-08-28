@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    playground-book-lint (0.2.0)
+    playgroundbook (0.2.1)
       colored (~> 1.2)
       cork (~> 0.1)
       plist (~> 3.2)
@@ -95,7 +95,7 @@ DEPENDENCIES
   guard-rspec
   mocha
   mocha-on-bacon
-  playground-book-lint!
+  playgroundbook!
   prettybacon
   rubocop (~> 0.41.2)
 

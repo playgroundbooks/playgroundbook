@@ -20,7 +20,7 @@ module Playgroundbook
 
     def manifest_contents(book_metadata)
       chapters = book_metadata['chapters'].map{ |c| "#{c}.playgroundchapter" }
-      {
+      manifest_contents = {
         'Name' => book_metadata['name'],
         'ContentIdentifier' => book_metadata['identifier'],
         'DeploymentTarget' => book_metadata['deployment_target'] || 'ios10.0',
@@ -28,6 +28,8 @@ module Playgroundbook
         'Version' => '1.0',
         'ContentVersion' => '1.0',
       }
+      manifest_contents['ImageReference'] = book_metadata['cover'] unless book_metadata['cover'].nil?
+      manifest_contents
     end
   end
 end

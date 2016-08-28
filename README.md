@@ -30,6 +30,7 @@ The yml file should be in the following format:
 name: Testing book
 identifier: com.ashfurrow.example
 resources: assets # Optional
+cover: cover.jpeg # Optional
 deployment_target: ios10.0 # Optional
 imports: # Optional, defaults to UIKit 
  - UIKit
@@ -40,7 +41,9 @@ chapters:
   - etc...
 ```
 
-Each chapter needs to have a corresponding playground; so `Chapter 1` requires there be a `Chapter 1.playground` playground. The playgrounds can reference (not copy) resources from an optionally specified directory. `import` frameworks are specified in the yaml file and are added to every page of the book. Each chapter needs to be in the following format:
+Each chapter needs to have a corresponding playground; so `Chapter 1` requires there be a `Chapter 1.playground` playground. The playgrounds can reference (not copy) resources from an optionally specified directory. `import` frameworks are specified in the yaml file and are added to every page of the book. You can specify a cover image file name that's stored in the `resources` directory. 
+
+Each chapter needs to be in the following format:
 
 ```swift
 // This is the preamble that is shared among all the pages within this chapter.
