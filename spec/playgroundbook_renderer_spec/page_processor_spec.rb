@@ -56,5 +56,15 @@ let b = a
       
       expect(page_processor.process_page(page_contents)).to eq(processed_page_contents)
     end
+
+    it 'does not strip newlines from code.' do
+      page_contents = <<-EOS
+let a = 6
+
+let b = a
+      EOS
+
+      expect(page_processor.process_page(page_contents)).to eq(page_contents)
+    end
   end
 end
