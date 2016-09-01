@@ -1,4 +1,4 @@
-require 'URI'
+require 'uri'
 
 module Playgroundbook
   GlossaryFileName = 'Glossary.plist'.freeze
