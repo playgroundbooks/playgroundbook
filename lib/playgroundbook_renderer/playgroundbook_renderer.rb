@@ -5,6 +5,7 @@ require 'fileutils'
 require 'playgroundbook_renderer/contents_manifest_generator'
 require 'playgroundbook_renderer/chapter_collator'
 require 'playgroundbook_renderer/page_parser'
+require 'playgroundbook_renderer/glossary_generator'
 
 module Playgroundbook
   ContentsDirName = 'Contents'
@@ -16,17 +17,20 @@ module Playgroundbook
     attr_accessor :contents_manifest_generator
     attr_accessor :page_parser
     attr_accessor :chapter_collator
+    attr_accessor :glossary_generator
     attr_accessor :ui
 
     def initialize(yaml_file_name, 
         contents_manifest_generator = ContentsManifestGenerator.new,
         page_parser = PageParser.new,
         chapter_collator = ChapterCollator.new,
+        glossary_generator = GlossaryGenerator.new,
         ui = Cork::Board.new)
       @yaml_file_name = yaml_file_name
       @contents_manifest_generator = contents_manifest_generator
       @page_parser = page_parser
       @chapter_collator = chapter_collator
+      @glossary_generator = glossary_generator
       @ui = ui
     end
 
@@ -71,6 +75,8 @@ module Playgroundbook
           end
         end
       end
+
+      @glossary_generator.generate!(parsed_chapters, book['glossary']) unless book['glossary'].nil?
     end
 
     def yaml_contents
