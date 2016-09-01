@@ -3,9 +3,10 @@ require File.expand_path('../../spec_helper', __FILE__)
 module Playgroundbook
   describe Renderer do
     include FakeFS::SpecHelpers
-    let(:renderer) { Renderer.new(yaml_file_name, contents_manifest_generator, chapter_collator, test_ui) }
+    let(:renderer) { Renderer.new(yaml_file_name, contents_manifest_generator, page_parser, chapter_collator, test_ui) }
     let(:yaml_file_name) { 'book.yml' }
     let(:contents_manifest_generator) { double(ContentsManifestGenerator) }
+    let(:page_parser) { double(PageParser) }
     let(:chapter_collator) { double(ChapterCollator) }
     let(:test_ui) { Cork::Board.new(silent: true) }
 
@@ -28,6 +29,7 @@ module Playgroundbook
 
     context 'with a playground' do
       before do
+        allow(page_parser).to receive(:parse_chapter_pages)
         Dir.mkdir('assets')
         FileUtils.touch('assets/file.png')
         Dir.mkdir('test_chapter.playground/')
