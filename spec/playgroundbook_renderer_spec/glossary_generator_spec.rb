@@ -29,16 +29,22 @@ module Playgroundbook
       end
 
       it 'generates correct first use page references' do
-        glossary_generator.generate!({
-            page_names: ['Page 1'],
-            page_contents: ["/*: Here's how to use [a thing](glossary://example%20term) */"],
-          },
-          ['Chapter 1'], 
+        glossary_generator.generate!([
+            {
+              page_names: ['Page 1'],
+              page_contents: ["/*: Here's how to use [a thing](glossary://example%20term) */"],
+            },
+            {
+              page_names: ['Should not see this'],
+              page_contents: ["/*: Here's how to use [a thing](glossary://example%20term) even though this shouldn't match' */"],
+            }
+          ],
+          ['Chapter 1', 'Chapter 2'], 
           glossary)
         
         expect(glossary_plist['Terms']['example term']['FirstUse']).to eq({
           'PageReference' => 'Chapter%201/Page%201',
-          'Title' => 'Page'
+          'Title' => 'Page 1'
         })
       end
     end
