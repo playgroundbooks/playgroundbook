@@ -74,12 +74,12 @@ module Playgroundbook
             end
           end
         end
-      end
 
-      unless book['glossary'].nil?
-        @ui.puts 'Generating glossary.'
-        @glossary_generator.generate!(parsed_chapters, book['chapters'], book['glossary'])
-      end 
+        unless book['glossary'].nil?
+          @ui.puts 'Generating glossary.'
+          @glossary_generator.generate!(parsed_chapters, book['chapters'], book['glossary'])
+        end 
+      end
     end
 
     def yaml_contents
