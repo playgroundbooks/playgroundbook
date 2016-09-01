@@ -8,7 +8,7 @@ require 'playgroundbook_renderer/page_parser'
 require 'playgroundbook_renderer/glossary_generator'
 
 module Playgroundbook
-  ContentsDirName = 'Contents'
+  ContentsDirectoryName = 'Contents'
   ChaptersDirName = 'Chapters'
 
   # A renderer for playground books.
@@ -53,12 +53,12 @@ module Playgroundbook
 
       Dir.mkdir(book_dir_name) unless Dir.exist?(book_dir_name)
       Dir.chdir(book_dir_name) do
-        Dir.mkdir(ContentsDirName) unless Dir.exist?(ContentsDirName)
-        Dir.chdir(ContentsDirName) do
+        Dir.mkdir(ContentsDirectoryName) unless Dir.exist?(ContentsDirectoryName)
+        Dir.chdir(ContentsDirectoryName) do
+          Dir.mkdir(ResourcesDirectoryName) unless Dir.exist?(ResourcesDirectoryName) # Always create a Resources dir, even if empty.
           resources_dir = book['resources']
           if !(resources_dir.nil? || resources_dir.empty?)
             @ui.puts "Copying resource directory (#{resources_dir.green}) contents."
-            Dir.mkdir(ResourcesDirectoryName) unless Dir.exist?(ResourcesDirectoryName)
             Dir.glob("../../#{resources_dir}/*").each do |file|
               FileUtils.cp(file, ResourcesDirectoryName)
             end
@@ -76,7 +76,10 @@ module Playgroundbook
         end
       end
 
-      @glossary_generator.generate!(parsed_chapters, book['glossary']) unless book['glossary'].nil?
+      unless book['glossary'].nil?
+        @ui.puts 'Generating glossary.'
+        @glossary_generator.generate!(parsed_chapters, book['chapters'], book['glossary'])
+      end 
     end
 
     def yaml_contents
