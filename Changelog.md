@@ -1,6 +1,6 @@
 # Current Master
 
-- Nothing yet.
+- Glossary support. See [#18](https://github.com/ashfurrow/playgroundbook/issues/18).
 
 # 0.2.1
 
