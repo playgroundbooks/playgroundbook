@@ -1,6 +1,6 @@
 # Current Master
 
-- Nothing yet.
+- Removes newlines surrounding markdown blocks. See [#20](https://github.com/ashfurrow/playgroundbook/issues/20).
 
 # 0.2.1
 
