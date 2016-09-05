@@ -12,7 +12,7 @@ module Playgroundbook
     let(:generated_page_contesnts) { "//#-hidden-code\nimport UIKit\n//#-end-hidden-code\n// Some swift goes here." }
 
     before do
-      allow(page_processor).to receive(:process_page) do |page_contents|
+      allow(page_processor).to receive(:strip_extraneous_newlines) do |page_contents|
         # Returns the parameter, unprocessed.
         page_contents
       end
@@ -29,7 +29,7 @@ module Playgroundbook
     end
 
     it 'calls the page processor' do
-      expect(page_processor).to receive(:process_page)
+      expect(page_processor).to receive(:strip_extraneous_newlines)
       page_writer.write_page!(page_name, page_dir_name, ['UIKit'],  page_contents)
     end
 

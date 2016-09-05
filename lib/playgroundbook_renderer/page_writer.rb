@@ -14,7 +14,7 @@ module Playgroundbook
       contents_with_import = "//#-hidden-code\n"
       contents_with_import += imports.map { |i| "import #{i}" }.join("\n") + "\n"
       contents_with_import += "//#-end-hidden-code\n"
-      contents_with_import += @page_processor.process_page(page_contents)
+      contents_with_import += @page_processor.strip_extraneous_newlines(page_contents)
 
       Dir.chdir(page_dir_name) do
         File.open(ContentsSwiftFileName, 'w') do |file|

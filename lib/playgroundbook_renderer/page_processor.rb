@@ -1,6 +1,6 @@
 module Playgroundbook
   class PageProcessor
-    def process_page(page_contents)
+    def strip_extraneous_newlines(page_contents)
       # Three cases we need to look for:
       # - Extraneous newlines before /*:
       # - Extraneous newlines after */
