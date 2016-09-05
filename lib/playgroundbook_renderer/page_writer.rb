@@ -1,9 +1,10 @@
 require 'plist'
+require 'playgroundbook_renderer/page_processor'
 
 module Playgroundbook
   class PageWriter
-
-    def initialize(ui = Cork::Board.new)
+    def initialize(page_processor = PageProcessor.new, ui = Cork::Board.new)
+      @page_processor = page_processor
       @ui = ui
     end
 
@@ -13,7 +14,7 @@ module Playgroundbook
       contents_with_import = "//#-hidden-code\n"
       contents_with_import += imports.map { |i| "import #{i}" }.join("\n") + "\n"
       contents_with_import += "//#-end-hidden-code\n"
-      contents_with_import += page_contents
+      contents_with_import += @page_processor.strip_extraneous_newlines(page_contents)
 
       Dir.chdir(page_dir_name) do
         File.open(ContentsSwiftFileName, 'w') do |file|
