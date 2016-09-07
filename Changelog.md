@@ -1,5 +1,9 @@
 # Current Master
 
+- Nothing yet.
+
+# 0.3.0
+
 - Glossary support. See [#18](https://github.com/ashfurrow/playgroundbook/issues/18).
 - Removes newlines surrounding markdown blocks. See [#20](https://github.com/ashfurrow/playgroundbook/issues/20).
 
