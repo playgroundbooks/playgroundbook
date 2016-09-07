@@ -6,7 +6,7 @@ module Playgroundbook
     let(:collator) { ChapterCollator.new(page_writer, test_ui) }
     let(:page_writer) { double(PageWriter) }
     let(:test_ui) { Cork::Board.new(silent: true) }
-    let(:chapter_contents) { test_chapter_contents }
+    let(:parsed_chapter) { PageParser.new.parse_chapter_pages(test_chapter_contents) }
     let(:chapter_name) { 'test_chapter' }
 
     before do
@@ -14,14 +14,14 @@ module Playgroundbook
     end
 
     it 'creates a chapter manifest' do
-      collator.collate!(chapter_name, chapter_contents, [])
+      collator.collate!(chapter_name, parsed_chapter, [])
 
       expect(File.exist?("#{chapter_name}.playgroundchapter/#{ManifestFileName}")).to be_truthy
     end
 
     context 'the chapter manifest' do
       before do
-        collator.collate!(chapter_name, chapter_contents, ['UIKit'])
+        collator.collate!(chapter_name, parsed_chapter, ['UIKit'])
       end
 
       it 'has the correct name' do
@@ -40,16 +40,16 @@ module Playgroundbook
       expect(page_writer).to receive(:write_page!).with("Page 1", "Page 1.playgroundpage", [], "str = \"Yo, it's page 1.\"\nsharedFunc()")
       expect(page_writer).to receive(:write_page!).with("Page 2", "Page 2.playgroundpage", [], "str = \"Page 2 awww yeah.\"\nsharedFunc()")
 
-      collator.collate!(chapter_name, chapter_contents, [])
+      collator.collate!(chapter_name, parsed_chapter, [])
     end
 
     it 'does not explode if a Source directory already exists' do
-      expect{ collator.collate!(chapter_name, chapter_contents, []) }.to_not raise_error
+      expect{ collator.collate!(chapter_name, parsed_chapter, []) }.to_not raise_error
     end
     
     context 'having colated' do
       before do
-        collator.collate!(chapter_name, chapter_contents, [])
+        collator.collate!(chapter_name, parsed_chapter, [])
       end
 
       it 'creates a Source directory if one does not exist' do

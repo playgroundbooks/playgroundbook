@@ -39,9 +39,17 @@ chapters:
   - Chapter 1
   - Chapter 2
   - etc...
+glossary:
+  term: definition
 ```
 
-Each chapter needs to have a corresponding playground; so `Chapter 1` requires there be a `Chapter 1.playground` playground. The playgrounds can reference (not copy) resources from an optionally specified directory. `import` frameworks are specified in the yaml file and are added to every page of the book. You can specify a cover image file name that's stored in the `resources` directory (it should be 400x300 pixels). 
+Each chapter needs to have a corresponding playground; so `Chapter 1` requires there be a `Chapter 1.playground` playground. The playgrounds can reference (not copy) resources from an optionally specified directory. `import` frameworks are specified in the yaml file and are added to every page of the book. You can specify a cover image file name that's stored in the `resources` directory (it should be 400x300 pixels). Finally, you can supply a glossary, a dictionary of term/definition pairs. This lets you link to terms in markdown. For example:
+
+```md
+... [term](glossary://term) ...
+```
+
+Only the link to the term must be URL encoded. For example, the term "reuse identifier" would be defined in the yaml as `reuse identifier` but linked to as `glossary://reuse%20identifier`.  
 
 Each chapter needs to be in the following format:
 

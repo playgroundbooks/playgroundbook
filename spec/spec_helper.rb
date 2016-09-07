@@ -24,6 +24,8 @@ require 'playgroundbook_lint/root_manifest_linter'
 require 'playgroundbook_renderer/contents_manifest_generator'
 require 'playgroundbook_renderer/chapter_collator'
 require 'playgroundbook_renderer/page_writer'
+require 'playgroundbook_renderer/page_parser'
+require 'playgroundbook_renderer/glossary_generator'
 require 'playgroundbook_renderer/page_processor'
 
 RSpec.configure do |config|
@@ -47,6 +49,11 @@ def test_book_metadata
     'identifier' => 'com.ashfurrow.testing',
     'resources' => 'assets',
     'cover' => 'file.jpeg',
+    'glossary' => [
+      {
+        'term' => 'definition'
+      }
+    ]
   }
 end
 
