@@ -1,6 +1,7 @@
 module Playgroundbook
   class PageParser
     def parse_chapter_pages(chapter_contents)
+      # Looks for //// PageName separators.
       page_names = chapter_contents.scan(/\/\/\/\/.*$/).map { |p| p.gsub('////', '').strip }
       page_dir_names = page_names.map { |p| "#{p}.playgroundpage" }
 
