@@ -14,7 +14,7 @@ module Playgroundbook
     end
 
     it 'generates a glossary plist' do
-      glossary_generator.generate!({}, [], glossary)
+      glossary_generator.generate({}, [], glossary)
       
       expect(File.exist?(glossary_file_name)).to be_truthy
     end
@@ -23,13 +23,13 @@ module Playgroundbook
       let(:glossary_plist) { Plist.parse_xml(glossary_file_name) }
 
       it 'has a glossary with correct terms' do
-        glossary_generator.generate!({}, [], glossary)
+        glossary_generator.generate({}, [], glossary)
 
         expect(glossary_plist['Terms']['example term']['Definition']).to eq('example definition')
       end
 
       it 'generates correct first use page references' do
-        glossary_generator.generate!([
+        glossary_generator.generate([
             {
               page_names: ['Page 1'],
               page_contents: ["/*: Here's how to use [a thing](glossary://example%20term) */"],

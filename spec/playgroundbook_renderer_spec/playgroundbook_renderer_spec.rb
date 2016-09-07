@@ -16,9 +16,9 @@ module Playgroundbook
         file.write(test_book_metadata.to_yaml)
       end
 
-      allow(contents_manifest_generator).to receive(:generate!)
-      allow(chapter_collator).to receive(:collate!)
-      allow(glossary_generator).to receive(:generate!)
+      allow(contents_manifest_generator).to receive(:generate)
+      allow(chapter_collator).to receive(:collate)
+      allow(glossary_generator).to receive(:generate)
     end
 
     it 'initializes correctly' do
@@ -26,7 +26,7 @@ module Playgroundbook
     end
 
     it 'explodes when there is no playground' do
-      expect{renderer.render!}.to raise_error
+      expect{renderer.render}.to raise_error
     end
 
     context 'with a playground' do
@@ -41,19 +41,19 @@ module Playgroundbook
       end
 
       it 'creates a directory with book name' do
-        renderer.render!
+        renderer.render
 
         expect(Dir.exist?('Testing Book.playgroundbook')).to be_truthy
       end
 
       it 'creates a resources folder' do
-        renderer.render!
+        renderer.render
 
         expect(Dir.exist?('Testing Book.playgroundbook/Contents/Resources')).to be_truthy
       end
 
       it 'copies a resources folder contents' do
-        renderer.render!
+        renderer.render
         
         expect(File.exist?('Testing Book.playgroundbook/Contents/Resources/file.png')).to be_truthy
       end
@@ -64,11 +64,11 @@ module Playgroundbook
         end
 
         it 'does not explode when the directory already exists' do
-          expect { renderer.render! }.to_not raise_error
+          expect { renderer.render }.to_not raise_error
         end
 
         it 'creates a Contents directory within the main bundle dir' do
-          renderer.render!
+          renderer.render
 
           expect(Dir.exist?('Testing Book.playgroundbook/Contents')).to be_truthy
         end
@@ -79,17 +79,17 @@ module Playgroundbook
           end
 
           it 'does not explode when the Contents directory already exists' do
-            expect { renderer.render! }.to_not raise_error
+            expect { renderer.render }.to_not raise_error
           end
 
           it 'renders main manifest' do
-            expect(contents_manifest_generator).to receive(:generate!)
+            expect(contents_manifest_generator).to receive(:generate)
 
-            renderer.render!
+            renderer.render
           end
 
           it 'creates a Chapters directory within the Contents dir' do
-            renderer.render!
+            renderer.render
 
             expect(Dir.exist?('Testing Book.playgroundbook/Contents/Chapters')).to be_truthy
           end
@@ -100,22 +100,22 @@ module Playgroundbook
             end
 
             it 'does not explode when the Chapters directory already exists' do
-              expect { renderer.render! }.to_not raise_error
+              expect { renderer.render }.to_not raise_error
             end
 
             it 'generates each chapter' do
-              expect(chapter_collator).to receive(:collate!)
+              expect(chapter_collator).to receive(:collate)
 
-              renderer.render!
+              renderer.render
             end
           end
         end
       end
 
       it 'generates a glossary' do
-        expect(glossary_generator).to receive(:generate!)
+        expect(glossary_generator).to receive(:generate)
 
-        renderer.render!
+        renderer.render
       end
     end
   end

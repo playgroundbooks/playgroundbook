@@ -11,7 +11,7 @@ module Playgroundbook
       @ui = ui
     end
 
-    def collate!(chapter_name, parsed_chapter, imports)
+    def collate(chapter_name, parsed_chapter, imports)
       @ui.puts "Processing #{chapter_name.green}."
 
       chapter_directory_name = "#{chapter_name}.playgroundchapter"
@@ -25,16 +25,16 @@ module Playgroundbook
             page_contents = parsed_chapter[:page_contents][index]
             page_dir_name = parsed_chapter[:page_dir_names][index]
 
-            @page_writer.write_page!(page_name, page_dir_name, imports, page_contents)
+            @page_writer.write_page(page_name, page_dir_name, imports, page_contents)
           end
         end
 
-        write_chapter_manifest!(chapter_name, parsed_chapter[:page_dir_names])
-        write_preamble!(parsed_chapter[:preamble])
+        write_chapter_manifest(chapter_name, parsed_chapter[:page_dir_names])
+        write_preamble(parsed_chapter[:preamble])
       end
     end
 
-    def write_chapter_manifest!(chapter_name, page_dir_names)
+    def write_chapter_manifest(chapter_name, page_dir_names)
       manifest_contents = {
         'Name' => chapter_name,
         'Pages' => page_dir_names,
@@ -46,7 +46,7 @@ module Playgroundbook
       end
     end
 
-    def write_preamble!(preamble)
+    def write_preamble(preamble)
       Dir.mkdir(SharedSourcesDirectoryName) unless Dir.exist?(SharedSourcesDirectoryName)
 
       Dir.chdir(SharedSourcesDirectoryName) do

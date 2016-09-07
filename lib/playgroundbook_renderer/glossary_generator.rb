@@ -4,7 +4,7 @@ module Playgroundbook
   GlossaryFileName = 'Glossary.plist'.freeze
 
   class GlossaryGenerator
-    def generate!(parsed_chapters, chapter_names, glossary)
+    def generate(parsed_chapters, chapter_names, glossary)
       glossary_plist = {
         'Terms' => {}
       }

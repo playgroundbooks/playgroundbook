@@ -6,13 +6,13 @@ module Playgroundbook
       @ui = ui
     end
 
-    def generate!(book_metadata)
+    def generate(book_metadata)
       @ui.puts "Generating main manifest file."
-      write_manifest_file!(book_metadata)
+      write_manifest_file(book_metadata)
       @ui.puts "Manifest file generated."
     end
 
-    def write_manifest_file!(book_metadata)
+    def write_manifest_file(book_metadata)
       File.open(ManifestFileName, 'w') do |file|
         file.write(manifest_contents(book_metadata).to_plist)
       end

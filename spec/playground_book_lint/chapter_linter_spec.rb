@@ -5,7 +5,7 @@ module Playgroundbook
     include FakeFS::SpecHelpers
     let(:chapter_linter) { ChapterLinter.new(chapter_manifest_linter) }
     let(:chapter_manifest_linter) { double(ChapterManifestLinter) }
-    let!(:chapter_directory_name) { 'test_chapter' }
+    let(:chapter_directory_name) { 'test_chapter' }
 
     it 'fails when chapter directory does not exist' do
       expect { chapter_linter.lint(chapter_directory_name) }.to raise_error(SystemExit)

@@ -5,7 +5,7 @@ module Playgroundbook
     include FakeFS::SpecHelpers
     let(:chapter_manifest_linter) { ChapterManifestLinter.new(page_linter) }
     let(:page_linter) { double(PageLinter) }
-    let!(:page_directory_name) { 'test.playgroundpage' }
+    let(:page_directory_name) { 'test.playgroundpage' }
 
     it 'fails if no Pages defined in Manifest' do
       FakeFS do

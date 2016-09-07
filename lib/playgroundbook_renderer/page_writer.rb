@@ -8,7 +8,7 @@ module Playgroundbook
       @ui = ui
     end
 
-    def write_page!(page_name, page_dir_name, imports, page_contents)
+    def write_page(page_name, page_dir_name, imports, page_contents)
       Dir.mkdir(page_dir_name) unless Dir.exist?(page_dir_name)
 
       contents_with_import = "//#-hidden-code\n"

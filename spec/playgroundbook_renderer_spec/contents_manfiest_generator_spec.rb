@@ -7,14 +7,14 @@ module Playgroundbook
     let(:test_ui) { Cork::Board.new(silent: true) }
 
     it 'creates the manifest file' do
-      generator.generate!(test_book_metadata)
+      generator.generate(test_book_metadata)
 
       expect(File.exist?('Manifest.plist')).to be_truthy
     end
 
     describe 'the manifest file' do
       before do
-        generator.generate!(test_book_metadata)
+        generator.generate(test_book_metadata)
       end
 
       it 'has a book name' do

@@ -34,7 +34,7 @@ module Playgroundbook
       @ui = ui
     end
 
-    def render!
+    def render
       ui.puts "Rendering #{yaml_file_name.green}..."
       
       book = yaml_contents
@@ -63,21 +63,21 @@ module Playgroundbook
               FileUtils.cp(file, ResourcesDirectoryName)
             end
           end
-          @contents_manifest_generator.generate!(book)
+          @contents_manifest_generator.generate(book)
 
           Dir.mkdir(ChaptersDirName) unless Dir.exist?(ChaptersDirName)
           Dir.chdir(ChaptersDirName) do
             # Chapter file name becomes chapter name in playground book.
             book['chapters'].each_with_index do |chapter_file_name, index|
               parsed_chapter = parsed_chapters[index]
-              @chapter_collator.collate!(chapter_file_name, parsed_chapter, book['imports'] || ['UIKit'])
+              @chapter_collator.collate(chapter_file_name, parsed_chapter, book['imports'] || ['UIKit'])
             end
           end
         end
 
         unless book['glossary'].nil?
           @ui.puts 'Generating glossary.'
-          @glossary_generator.generate!(parsed_chapters, book['chapters'], book['glossary'])
+          @glossary_generator.generate(parsed_chapters, book['chapters'], book['glossary'])
         end 
       end
     end

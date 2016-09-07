@@ -24,18 +24,18 @@ module Playgroundbook
       end
 
       it 'does not explode' do
-        expect{ page_writer.write_page!(page_name, page_dir_name, ['UIKit'],  page_contents) }.to_not raise_error
+        expect{ page_writer.write_page(page_name, page_dir_name, ['UIKit'],  page_contents) }.to_not raise_error
       end
     end
 
     it 'calls the page processor' do
       expect(page_processor).to receive(:strip_extraneous_newlines)
-      page_writer.write_page!(page_name, page_dir_name, ['UIKit'],  page_contents)
+      page_writer.write_page(page_name, page_dir_name, ['UIKit'],  page_contents)
     end
 
     context 'as a consequence of writing rendering' do
       before do
-        page_writer.write_page!(page_name, page_dir_name, ['UIKit'],  page_contents)
+        page_writer.write_page(page_name, page_dir_name, ['UIKit'],  page_contents)
       end
 
       it 'creates a directory' do
