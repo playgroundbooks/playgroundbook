@@ -1,4 +1,5 @@
 require "fileutils"
+require 'open-uri'
 
 module Playgroundbook
   # Converts a Markdown file into a Swift Playground
@@ -18,7 +19,8 @@ module Playgroundbook
 
     def generate
       contents = swap_code_context(playground_contents)
-      create_a_playground_wrapper(contents)
+      images = get_list_of_images(contents)
+      create_a_playground_wrapper(contents, images)
     end
 
     def swap_code_context(file_content)
@@ -28,7 +30,11 @@ module Playgroundbook
       prefix + content + suffix
     end
 
-    def create_a_playground_wrapper(file_content)
+    def get_list_of_images(file_content)
+      file_content.scan(/\!\[.*\]\((.*?)\)/).flatten
+    end
+
+    def create_a_playground_wrapper(file_content, images)
       folder = File.dirname(source)
       playground = File.join(folder, name + ".playground")
 
@@ -52,6 +58,28 @@ XML
 XML
       File.write(File.join(playground, "contents.xcplayground"), xcplayground)
       File.write(File.join(playground, "timeline.xctimeline"), timeline)
+
+      resources = File.join(playground, "Resources")
+      Dir.mkdir(resources)
+
+      images.each do |image|
+        outer_image_path = File.join(folder, image)
+        local = File.exist? outer_image_path
+        remote = image.include? "http"
+
+        if local
+          basedir = File.dirname(image)
+          inner_basedir = File.join(resources, basedir)
+          Dir.mkdir(inner_basedir) unless Dir.exist?(inner_basedir)
+          FileUtils.cp(outer_image_path, inner_basedir)
+
+        elsif remote
+          file = File.open(File.join(resources, File.basename(image)), "wb")
+          file.write(open(image, "rb").read)
+          file_content.gsub!(image, File.basename(image))
+        end
+      end
+
       File.write(File.join(playground, "Contents.swift"), file_content)
     end
   end
