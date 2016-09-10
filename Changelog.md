@@ -1,6 +1,6 @@
 # Current Master
 
-- Nothing yet.
+- Support converting a random Markdown file into a playground. See [#29](https://github.com/ashfurrow/playgroundbook/pull/29).
 
 # 0.3.0
 
