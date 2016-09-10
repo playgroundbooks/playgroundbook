@@ -19,15 +19,12 @@ module Playgroundbook
 
           pages.each_with_index do |page, j|
             page_name = URI.escape(page_names[j])
-            unless page.scan("](glossary://#{escaped_term})").empty?
-              glossary_plist['Terms'][term].merge!({
-                'FirstUse' => {
-                  'Title' => page_names[j],
-                  'PageReference' => "#{chapter_name}/#{page_name}",
-                }
-              })
-              break
-            end
+            next if page.scan("](glossary://#{escaped_term})").empty?
+            glossary_plist['Terms'][term]['FirstUse'] = {
+              'Title' => page_names[j],
+              'PageReference' => "#{chapter_name}/#{page_name}"
+            }
+            break
           end
 
           # Break if we found the first user.

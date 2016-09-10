@@ -3,7 +3,7 @@ require File.expand_path('../../spec_helper', __FILE__)
 module Playgroundbook
   describe PageProcessor do
     let(:page_processor) { PageProcessor.new }
-    
+
     it 'removes newlines before markdown blocks' do
       page_contents = <<-EOS
 let a = 6
@@ -18,7 +18,7 @@ let a = 6
  Some markdown.
 */
       EOS
-      
+
       expect(page_processor.strip_extraneous_newlines(page_contents)).to eq(processed_page_contents)
     end
 
@@ -36,7 +36,7 @@ let a = 6
 */
 let a = 6
       EOS
-      
+
       expect(page_processor.strip_extraneous_newlines(page_contents)).to eq(processed_page_contents)
     end
 
@@ -53,7 +53,7 @@ let a = 6
 //: Some markdown.
 let b = a
       EOS
-      
+
       expect(page_processor.strip_extraneous_newlines(page_contents)).to eq(processed_page_contents)
     end
 
@@ -72,14 +72,14 @@ let b = a
 /*:
 
  # Header
- 
+
  Some markdown. The following lines are purposefull left blank.
 
 
 
 */
       EOS
-      
+
       expect(page_processor.strip_extraneous_newlines(page_contents)).to eq(page_contents)
     end
   end

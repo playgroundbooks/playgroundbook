@@ -24,7 +24,7 @@ module Playgroundbook
         FakeFS do
           cutscene_reference = 'FakeFile.html'
           plist = {
-            'Name' => 'Test Page',
+            'Name' => 'Test Page'
           }.to_plist
           File.open('Manifest.plist', 'w') { |f| f.write(plist) }
 

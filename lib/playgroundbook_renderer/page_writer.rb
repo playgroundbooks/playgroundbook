@@ -22,12 +22,12 @@ module Playgroundbook
         end
 
         File.open(MANIFEST_FILE_NAME, 'w') do |file|
-          file.write ({
+          file.write {
             'Name' => page_name,
             'LiveViewMode' => 'HiddenByDefault',
             'Version' => '1.0',
-            'ContentVersion' => '1.0',
-          }.to_plist)
+            'ContentVersion' => '1.0'
+          }.to_plist
         end
       end
     end
