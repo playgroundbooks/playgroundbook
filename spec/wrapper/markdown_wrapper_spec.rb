@@ -68,6 +68,14 @@ module Playgroundbook
         remote_image = "http://ortastuff.s3.amazonaws.com/site/images/twitter_black.png"
         subject.playground_contents.gsub!("img/welcome.png", remote_image)
 
+        # Quacks like the value of `open`
+        class EmptyOpen
+          def read
+            ""
+          end
+        end
+
+        allow(subject).to receive(:open).and_return(EmptyOpen.new)
         subject.generate
 
         source_path = File.join(dir, "Swift at Artsy.playground", "Contents.swift")

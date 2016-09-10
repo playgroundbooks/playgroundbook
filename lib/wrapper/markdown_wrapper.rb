@@ -1,5 +1,5 @@
 require "fileutils"
-require 'open-uri'
+require "open-uri"
 
 module Playgroundbook
   # Converts a Markdown file into a Swift Playground
