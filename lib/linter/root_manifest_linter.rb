@@ -1,6 +1,6 @@
 require "plist"
-require "playgroundbook_lint/manifest_linter"
-require "playgroundbook_lint/chapter_linter"
+require "linter/manifest_linter"
+require "linter/chapter_linter"
 
 module Playgroundbook
   # A linter for verifying the contents of a playground book's root manifest

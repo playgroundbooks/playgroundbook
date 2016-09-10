@@ -1,5 +1,5 @@
 require "plist"
-require "playgroundbook_renderer/page_processor"
+require "renderer/page_processor"
 
 module Playgroundbook
   class PageWriter
@@ -27,7 +27,7 @@ module Playgroundbook
             "LiveViewMode" => "HiddenByDefault",
             "Version" => "1.0",
             "ContentVersion" => "1.0"
-          }).to_plist
+          }.to_plist)
         end
       end
     end

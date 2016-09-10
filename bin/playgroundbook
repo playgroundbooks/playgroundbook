@@ -15,6 +15,9 @@ if command == "lint"
   Playgroundbook::Linter.new(file_name).lint
 elsif command == "render"
   Playgroundbook::Renderer.new(file_name).render
+elsif command == "wrapper"
+  playground_name = ARGV[2]
+  Playgroundbook::MarkdownWrapper.new(file_name, playground_name).generate
 else
   puts "Unknown command: #{command}"
   exit 1

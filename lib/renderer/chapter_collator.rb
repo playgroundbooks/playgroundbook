@@ -1,5 +1,5 @@
 require "plist"
-require "playgroundbook_renderer/page_writer"
+require "renderer/page_writer"
 
 module Playgroundbook
   SharedSourcesDirectoryName = "Sources".freeze

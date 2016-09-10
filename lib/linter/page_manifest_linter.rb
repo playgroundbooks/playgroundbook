@@ -1,5 +1,5 @@
 require "plist"
-require "playgroundbook_lint/manifest_linter"
+require "linter/manifest_linter"
 
 module Playgroundbook
   # A linter for verifying the contents of a page's Manifest.plist

@@ -2,10 +2,10 @@ require "colored"
 require "pathname"
 require "yaml"
 require "fileutils"
-require "playgroundbook_renderer/contents_manifest_generator"
-require "playgroundbook_renderer/chapter_collator"
-require "playgroundbook_renderer/page_parser"
-require "playgroundbook_renderer/glossary_generator"
+require "renderer/contents_manifest_generator"
+require "renderer/chapter_collator"
+require "renderer/page_parser"
+require "renderer/glossary_generator"
 
 module Playgroundbook
   ContentsDirectoryName = "Contents".freeze

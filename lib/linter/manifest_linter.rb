@@ -1,5 +1,5 @@
 require "plist"
-require "playgroundbook_lint/abstract_linter"
+require "linter/abstract_linter"
 
 module Playgroundbook
   MANIFEST_FILE_NAME = "Manifest.plist".freeze

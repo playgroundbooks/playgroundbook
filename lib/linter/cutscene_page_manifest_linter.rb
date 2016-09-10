@@ -1,4 +1,4 @@
-require "playgroundbook_lint/manifest_linter"
+require "linter/manifest_linter"
 
 module Playgroundbook
   # A linter for verifying the contents of a cutscene page's manifest
