@@ -1,8 +1,8 @@
-require 'plist'
-require 'playgroundbook_lint/abstract_linter'
+require "plist"
+require "playgroundbook_lint/abstract_linter"
 
 module Playgroundbook
-  MANIFEST_FILE_NAME = 'Manifest.plist'.freeze
+  MANIFEST_FILE_NAME = "Manifest.plist".freeze
 
   # A base inplementation of a linter for verifying the contents of manifest
   # files.
@@ -20,13 +20,13 @@ module Playgroundbook
 
     def manifest_plist_contents
       return @manifest_plist_contents unless @manifest_plist_contents.nil?
-      require 'plist'
+      require "plist"
       @manifest_plist_contents = Plist.parse_xml(MANIFEST_FILE_NAME)
       @manifest_plist_contents
     end
 
     def name?
-      value_defined_in_manifest?('Name')
+      value_defined_in_manifest?("Name")
     end
 
     def value_defined_in_manifest?(key)

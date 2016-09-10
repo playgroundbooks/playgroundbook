@@ -1,5 +1,5 @@
-require 'plist'
-require 'playgroundbook_renderer/page_processor'
+require "plist"
+require "playgroundbook_renderer/page_processor"
 
 module Playgroundbook
   class PageWriter
@@ -17,17 +17,17 @@ module Playgroundbook
       contents_with_import += @page_processor.strip_extraneous_newlines(page_contents)
 
       Dir.chdir(page_dir_name) do
-        File.open(ContentsSwiftFileName, 'w') do |file|
+        File.open(ContentsSwiftFileName, "w") do |file|
           file.write(contents_with_import)
         end
 
-        File.open(MANIFEST_FILE_NAME, 'w') do |file|
-          file.write ({
-            'Name' => page_name,
-            'LiveViewMode' => 'HiddenByDefault',
-            'Version' => '1.0',
-            'ContentVersion' => '1.0',
-          }.to_plist)
+        File.open(MANIFEST_FILE_NAME, "w") do |file|
+          file.write({
+            "Name" => page_name,
+            "LiveViewMode" => "HiddenByDefault",
+            "Version" => "1.0",
+            "ContentVersion" => "1.0"
+          }).to_plist
         end
       end
     end

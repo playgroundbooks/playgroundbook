@@ -1,5 +1,5 @@
-require 'colored'
-require 'cork'
+require "colored"
+require "cork"
 
 module Playgroundbook
   # AbstractLinter provides a base implementation of a linter which a concrete

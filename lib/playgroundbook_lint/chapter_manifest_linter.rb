@@ -1,6 +1,6 @@
-require 'playgroundbook_lint/manifest_linter'
-require 'playgroundbook_lint/page_linter'
-require 'playgroundbook_lint/cutscene_page_linter'
+require "playgroundbook_lint/manifest_linter"
+require "playgroundbook_lint/page_linter"
+require "playgroundbook_lint/cutscene_page_linter"
 
 module Playgroundbook
   # A linter for verifying the contents of a chapter's Manifest.plist
@@ -17,7 +17,7 @@ module Playgroundbook
 
       fail_lint "Chapter has no pages in #{Dir.pwd}" unless chapter_has_manifest_pages?
 
-      manifest_plist_contents['Pages'].each do |page_directory_name|
+      manifest_plist_contents["Pages"].each do |page_directory_name|
         # All pages exist inside the /Pages subdirectory, we need to chdir to there first.
         Dir.chdir PAGES_DIRECTORY_NAME do
           fail_lint "Chapter page directory #{page_directory_name} missing in #{Dir.pwd}" unless Dir.exist?(page_directory_name)
@@ -37,7 +37,7 @@ module Playgroundbook
     end
 
     def chapter_has_manifest_pages?
-      value_defined_in_manifest?('Pages')
+      value_defined_in_manifest?("Pages")
     end
   end
 end

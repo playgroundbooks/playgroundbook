@@ -1,5 +1,5 @@
-require 'playgroundbook_lint/abstract_linter'
-require 'playgroundbook_lint/page_manifest_linter'
+require "playgroundbook_lint/abstract_linter"
+require "playgroundbook_lint/page_manifest_linter"
 
 module Playgroundbook
   # A linter for verifying the contents of a page directory

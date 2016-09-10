@@ -1,4 +1,4 @@
-require 'playgroundbook_lint/manifest_linter'
+require "playgroundbook_lint/manifest_linter"
 
 module Playgroundbook
   # A linter for verifying the contents of a cutscene page's manifest
@@ -9,7 +9,7 @@ module Playgroundbook
       super()
 
       # Cutscene references should point to an existent HTML file
-      cutscene_reference = manifest_plist_contents['CutsceneReference']
+      cutscene_reference = manifest_plist_contents["CutsceneReference"]
       fail_lint "Cutscene manifest doesn't reference a cutscene file" if cutscene_reference.nil?
       fail_lint "Cutscene file at '#{cutscene_reference}' isn't HTML" unless cutscene_reference =~ /^.+\.html$/i
       fail_lint "Cutscene file at '#{cutscene_reference}' doesn't exist" unless File.exist? cutscene_reference

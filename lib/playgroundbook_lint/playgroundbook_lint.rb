@@ -1,7 +1,7 @@
-require 'colored'
-require 'playgroundbook_lint/abstract_linter'
-require 'playgroundbook_lint/contents_linter'
-require 'pathname'
+require "colored"
+require "playgroundbook_lint/abstract_linter"
+require "playgroundbook_lint/contents_linter"
+require "pathname"
 
 module Playgroundbook
   # A linter for verifying a playground book
@@ -17,7 +17,7 @@ module Playgroundbook
     def lint
       message "Validating #{playground_file_name.yellow}..."
 
-      fail_lint 'No Contents directory' unless contents_dir_exists?
+      fail_lint "No Contents directory" unless contents_dir_exists?
 
       Dir.chdir playground_file_name do
         contents_linter.lint
@@ -25,7 +25,7 @@ module Playgroundbook
     end
 
     def contents_dir_exists?
-      Dir.exist?(playground_file_name + '/Contents')
+      Dir.exist?(playground_file_name + "/Contents")
     end
   end
 end
