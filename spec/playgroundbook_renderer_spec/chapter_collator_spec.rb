@@ -30,23 +30,23 @@ module Playgroundbook
 
       it 'has the correct pages' do
         expect(get_manifest("#{chapter_name}.playgroundchapter/#{ManifestFileName}")['Pages']).to eq([
-          'Page 1.playgroundpage', 
-          'Page 2.playgroundpage',
-        ])
+                                                                                                       'Page 1.playgroundpage',
+                                                                                                       'Page 2.playgroundpage'
+                                                                                                     ])
       end
     end
 
     it 'calls the page_writer for each page' do
-      expect(page_writer).to receive(:write_page).with("Page 1", "Page 1.playgroundpage", [], "str = \"Yo, it's page 1.\"\nsharedFunc()")
-      expect(page_writer).to receive(:write_page).with("Page 2", "Page 2.playgroundpage", [], "str = \"Page 2 awww yeah.\"\nsharedFunc()")
+      expect(page_writer).to receive(:write_page).with('Page 1', 'Page 1.playgroundpage', [], "str = \"Yo, it's page 1.\"\nsharedFunc()")
+      expect(page_writer).to receive(:write_page).with('Page 2', 'Page 2.playgroundpage', [], "str = \"Page 2 awww yeah.\"\nsharedFunc()")
 
       collator.collate(chapter_name, parsed_chapter, [])
     end
 
     it 'does not explode if a Source directory already exists' do
-      expect{ collator.collate(chapter_name, parsed_chapter, []) }.to_not raise_error
+      expect { collator.collate(chapter_name, parsed_chapter, []) }.to_not raise_error
     end
-    
+
     context 'having colated' do
       before do
         collator.collate(chapter_name, parsed_chapter, [])
@@ -64,7 +64,7 @@ module Playgroundbook
         it 'has the correct preamble contents' do
           expect(File.read("#{chapter_name}.playgroundchapter/#{SharedSourcesDirectoryName}/#{PreambleFileName}")).to eq("import UIKit\n\nvar str = \"Hello, playground\"\n\nfunc sharedFunc() {\n  print(\"This should be accessible to all pages.\")\n}")
         end
-      end  
+      end
     end
   end
 end

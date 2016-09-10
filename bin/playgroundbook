@@ -19,4 +19,3 @@ else
   puts "Unknown command: #{command}"
   exit 1
 end
-

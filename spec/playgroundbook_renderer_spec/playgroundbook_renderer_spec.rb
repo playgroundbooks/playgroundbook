@@ -26,7 +26,7 @@ module Playgroundbook
     end
 
     it 'explodes when there is no playground' do
-      expect{renderer.render}.to raise_error
+      expect { renderer.render }.to raise_error
     end
 
     context 'with a playground' do
@@ -54,7 +54,7 @@ module Playgroundbook
 
       it 'copies a resources folder contents' do
         renderer.render
-        
+
         expect(File.exist?('Testing Book.playgroundbook/Contents/Resources/file.png')).to be_truthy
       end
 

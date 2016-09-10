@@ -8,8 +8,8 @@ require 'playgroundbook_renderer/page_parser'
 require 'playgroundbook_renderer/glossary_generator'
 
 module Playgroundbook
-  ContentsDirectoryName = 'Contents'
-  ChaptersDirName = 'Chapters'
+  ContentsDirectoryName = 'Contents'.freeze
+  ChaptersDirName = 'Chapters'.freeze
 
   # A renderer for playground books.
   class Renderer < AbstractLinter
@@ -20,12 +20,12 @@ module Playgroundbook
     attr_accessor :glossary_generator
     attr_accessor :ui
 
-    def initialize(yaml_file_name, 
-        contents_manifest_generator = ContentsManifestGenerator.new,
-        page_parser = PageParser.new,
-        chapter_collator = ChapterCollator.new,
-        glossary_generator = GlossaryGenerator.new,
-        ui = Cork::Board.new)
+    def initialize(yaml_file_name,
+                   contents_manifest_generator = ContentsManifestGenerator.new,
+                   page_parser = PageParser.new,
+                   chapter_collator = ChapterCollator.new,
+                   glossary_generator = GlossaryGenerator.new,
+                   ui = Cork::Board.new)
       @yaml_file_name = yaml_file_name
       @contents_manifest_generator = contents_manifest_generator
       @page_parser = page_parser
@@ -36,7 +36,7 @@ module Playgroundbook
 
     def render
       ui.puts "Rendering #{yaml_file_name.green}..."
-      
+
       book = yaml_contents
       book_dir_name = "#{book['name']}.playgroundbook"
       book_chapter_contents = []
@@ -57,7 +57,7 @@ module Playgroundbook
         Dir.chdir(ContentsDirectoryName) do
           Dir.mkdir(ResourcesDirectoryName) unless Dir.exist?(ResourcesDirectoryName) # Always create a Resources dir, even if empty.
           resources_dir = book['resources']
-          if !(resources_dir.nil? || resources_dir.empty?)
+          unless resources_dir.nil? || resources_dir.empty?
             @ui.puts "Copying resource directory (#{resources_dir.green}) contents."
             Dir.glob("../../#{resources_dir}/*").each do |file|
               FileUtils.cp(file, ResourcesDirectoryName)
@@ -78,7 +78,7 @@ module Playgroundbook
         unless book['glossary'].nil?
           @ui.puts 'Generating glossary.'
           @glossary_generator.generate(parsed_chapters, book['chapters'], book['glossary'])
-        end 
+        end
       end
     end
 

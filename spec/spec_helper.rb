@@ -62,7 +62,7 @@ def get_manifest(file_name = Playgroundbook::ManifestFileName)
 end
 
 def test_chapter_contents
-<<-EOSwift
+  <<-EOSwift
 import UIKit
 
 var str = "Hello, playground"

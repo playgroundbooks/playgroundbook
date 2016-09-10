@@ -6,14 +6,14 @@ module Playgroundbook
       page_dir_names = page_names.map { |p| "#{p}.playgroundpage" }
 
       split_file = chapter_contents.split(/\/\/\/\/.*$/)
-      page_contents = split_file.drop(1).map { |p| p.strip }
+      page_contents = split_file.drop(1).map(&:strip)
       preamble = split_file.first.strip
 
       {
         page_dir_names: page_dir_names,
         page_names: page_names,
         page_contents: page_contents,
-        preamble: preamble,
+        preamble: preamble
       }
     end
   end
