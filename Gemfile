@@ -1,12 +1,13 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'guard-rspec'
-gem 'mocha'
-gem 'bacon'
-gem 'mocha-on-bacon'
-gem 'prettybacon'
-gem 'fakefs'
-gem 'rubocop', '~> 0.41.2', require: false
+gem "rake"
+gem "guard-rspec"
+gem "mocha"
+gem "bacon"
+gem "mocha-on-bacon"
+gem "prettybacon"
+gem "fakefs"
+gem "rubocop", "~> 0.41.2", require: false
 
-require 'pp' # https://github.com/defunkt/fakefs/issues/99
+require "pp" # https://github.com/defunkt/fakefs/issues/99
 gemspec
