@@ -2,7 +2,9 @@
 
 # playgroundbook
 
-Linter for Swift Playground books based on [Apple's documentation](https://developer.apple.com/library/prerelease/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/index.html#//apple_ref/doc/uid/TP40017343-CH47-SW4). It's a work in progress (see [issues](https://github.com/ashfurrow/playground-book-lint/issues)) but you can use it now.
+A series of tools for Swift Playground and Playground books based on [Apple's documentation](https://developer.apple.com/library/prerelease/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/index.html#//apple_ref/doc/uid/TP40017343-CH47-SW4). 
+
+It's a work in progress (see [issues](https://github.com/ashfurrow/playground-book-lint/issues)) but you can use it now.
 
 ## Installation
 
@@ -107,7 +109,7 @@ Maybe you want to do something for a website, or a git repo first, and then gene
 For example, you might have a folder that looks like:
 
 ``` sh
-$ tree Beginners/Lesson\ One
+> tree Beginners/Lesson\ One
 
 Beginners/Lesson\ One
 ├── README.md
@@ -129,7 +131,7 @@ playgroundbook wrapper "Beginners/Lesson\ One/README.md" "Lesson One"
 And it will switch out swift codeblocks into the playground. You _have_ to use  triple backticks with swift <code>```swift</code>. No space between them.
 
 ```sh
-$ tree Beginners/Lesson\ One
+> tree Beginners/Lesson\ One
 
 Beginners/Lesson\ One
 ├── Lesson\ One.playground
