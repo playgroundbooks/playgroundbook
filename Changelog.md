@@ -1,6 +1,8 @@
 # Current Master
 
 - Support converting a random Markdown file into a playground. See [#29](https://github.com/ashfurrow/playgroundbook/pull/29).
+- Embeds images inside the local Playground when converting from markdown. See [#30](https://github.com/ashfurrow/playgroundbook/pull/30).
+
 
 # 0.3.0
 

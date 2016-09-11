@@ -2,7 +2,9 @@
 
 # playgroundbook
 
-Linter for Swift Playground books based on [Apple's documentation](https://developer.apple.com/library/prerelease/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/index.html#//apple_ref/doc/uid/TP40017343-CH47-SW4). It's a work in progress (see [issues](https://github.com/ashfurrow/playground-book-lint/issues)) but you can use it now.
+A series of tools for Swift Playground and Playground books based on [Apple's documentation](https://developer.apple.com/library/prerelease/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/index.html#//apple_ref/doc/uid/TP40017343-CH47-SW4). 
+
+It's a work in progress (see [issues](https://github.com/ashfurrow/playground-book-lint/issues)) but you can use it now.
 
 ## Installation
 
@@ -99,6 +101,54 @@ It's awkward; if you have suggestions, open an issue :+1:
 Sharing resources is only available book-wide and not specific to chapters. Sharing code outside the preamble isn't supported yet.
 
 Playground books support a rich set of awesome features to make learning how to code really easy, and this tool uses almost none of them. It sacrifices this experience for the sake of being able to easily write the books on your Mac.
+
+### Creating a Playground from markdown
+
+Maybe you want to do something for a website, or a git repo first, and then generate your Playground? Well in those cases your source of truth is the markdown document. For that case, we have `playgroundbook wrapper`.
+
+For example, you might have a folder that looks like:
+
+``` sh
+> tree Beginners/Lesson\ One
+
+Beginners/Lesson\ One
+├── README.md
+├── README_ZH.md
+└── img
+    ├── emptyplayground.png
+    ├── multipleresults.png
+    ├── newplayground.png
+    ├── results.png
+    ├── tentimes.png
+    └── welcome.png
+```
+
+You can run:
+```sh
+playgroundbook wrapper "Beginners/Lesson\ One/README.md" "Lesson One"
+```
+
+And it will switch out swift codeblocks into the playground. You _have_ to use  triple backticks with swift <code>```swift</code>. No space between them.
+
+```sh
+> tree Beginners/Lesson\ One
+
+Beginners/Lesson\ One
+├── Lesson\ One.playground
+│   ├── Contents.swift
+│   ├── Resources
+│   │   └── img
+│   │       ├── emptyplayground.png
+│   │       ├── newplayground.png
+│   │       ├── results.png
+│   │       └── welcome.png
+│   ├── contents.xcplayground
+│   └── timeline.xctimeline
+├── README.md
+...
+```
+
+You might notice that a subset of images, have moved well, they're the only one being used in the `README.md`. Slick huh?
 
 ## License
 
