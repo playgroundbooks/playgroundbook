@@ -4,6 +4,7 @@ require "renderer/page_writer"
 
 module Playgroundbook
   SharedSourcesDirectoryName = "Sources".freeze
+  SharedResourcesDirectoryName = "Resources".freeze
   PreambleFileName = "Preamble.swift".freeze
 
   class ChapterCollator
@@ -33,6 +34,7 @@ module Playgroundbook
         write_chapter_manifest(chapter_name, parsed_chapter[:page_dir_names])
         write_preamble(parsed_chapter[:preamble])
         write_sources(parsed_chapter[:source_names])
+        write_resources(parsed_chapter[:resource_names])
       end
     end
 
@@ -63,6 +65,14 @@ module Playgroundbook
 
       source_names.each do |source|
         FileUtils.cp("../../../../#{source}", SharedSourcesDirectoryName)
+      end
+    end
+
+    def write_resources(resource_names)
+      Dir.mkdir(SharedResourcesDirectoryName) unless Dir.exist?(SharedResourcesDirectoryName)
+
+      resource_names.each do |resource|
+        FileUtils.cp("../../../../#{resource}", SharedResourcesDirectoryName)
       end
     end
   end

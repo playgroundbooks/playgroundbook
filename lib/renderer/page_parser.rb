@@ -1,6 +1,6 @@
 module Playgroundbook
   class PageParser
-    def parse_chapter_pages(chapter_contents, source_names)
+    def parse_chapter_pages(chapter_contents, source_names, resource_names)
       # Looks for //// PageName separators.
       page_names = chapter_contents.scan(/\/\/\/\/.*$/).map { |p| p.gsub("////", "").strip }
       page_dir_names = page_names.map { |p| "#{p}.playgroundpage" }
@@ -14,18 +14,20 @@ module Playgroundbook
         page_names: page_names,
         page_contents: page_contents,
         preamble: preamble,
-        source_names: source_names
+        source_names: source_names,
+        resource_names: resource_names
       }
     end
 
-    def parse_chapter_xcplaygroundpages(page_names, page_contents, source_names)
+    def parse_chapter_xcplaygroundpages(page_names, page_contents, source_names, resource_names)
       page_dir_names = page_names.map { |p| "#{p}.playgroundpage" }
 
       {
         page_dir_names: page_dir_names,
         page_names: page_names,
         page_contents: page_contents,
-        source_names: source_names
+        source_names: source_names,
+        resource_names: resource_names
       }
     end
   end

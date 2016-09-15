@@ -6,7 +6,7 @@ module Playgroundbook
     let(:collator) { ChapterCollator.new(page_writer, test_ui) }
     let(:page_writer) { double(PageWriter) }
     let(:test_ui) { Cork::Board.new(silent: true) }
-    let(:parsed_chapter) { PageParser.new.parse_chapter_pages(test_chapter_contents, []) }
+    let(:parsed_chapter) { PageParser.new.parse_chapter_pages(test_chapter_contents, [], []) }
     let(:chapter_name) { "test_chapter" }
 
     before do
