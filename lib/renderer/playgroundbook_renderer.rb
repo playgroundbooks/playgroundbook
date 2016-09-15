@@ -2,6 +2,7 @@ require "colored"
 require "pathname"
 require "yaml"
 require "fileutils"
+require "nokogiri"
 require "renderer/contents_manifest_generator"
 require "renderer/chapter_collator"
 require "renderer/page_parser"
@@ -39,17 +40,32 @@ module Playgroundbook
 
       book = yaml_contents
       book_dir_name = "#{book['name']}.playgroundbook"
-      book_chapter_contents = []
+      parsed_chapters = []
       # TODO: Validate YAML contents?
       begin
-        book_chapter_contents = book["chapters"].map do |chapter|
-          File.read("#{chapter}.playground/Contents.swift")
+        parsed_chapters = book["chapters"].map do |chapter|
+          single_page_file = "#{chapter}.playground/Contents.swift"
+          multiple_pages = "#{chapter}.playground/Pages/*.xcplaygroundpage"
+          if File.exist?(single_page_file)
+            c = File.read(single_page_file)
+            page_parser.parse_chapter_pages(c)
+          elsif !Dir.glob("#{chapter}.playground/Pages/*.xcplaygroundpage").empty?
+            preamble_file = "#{chapter}.playground/Sources/Preamble.swift"
+            preamble = File.exist?(preamble_file) ? File.read(preamble_file) : ""
+            toc = Nokogiri::XML(File.read("#{chapter}.playground/contents.xcplayground"))
+            page_names = toc.xpath("//page").map { |p| p["name"] }
+            page_contents = page_names.map do |p|
+              File.read("#{chapter}.playground/Pages/#{p}.xcplaygroundpage/Contents.swift")
+            end
+            page_parser.parse_chapter_xcplaygroundpages(preamble, page_names, page_contents)
+          else
+            raise "Missing valid playground for #{chapter}."
+          end
         end
       rescue => e
-        ui.puts "Failed to open playground Contents.swift file."
+        ui.puts "Failed to open and parse playground chapter."
         raise e
       end
-      parsed_chapters = book_chapter_contents.map { |c| page_parser.parse_chapter_pages(c) }
 
       Dir.mkdir(book_dir_name) unless Dir.exist?(book_dir_name)
       Dir.chdir(book_dir_name) do

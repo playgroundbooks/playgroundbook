@@ -16,5 +16,16 @@ module Playgroundbook
         preamble: preamble
       }
     end
+
+    def parse_chapter_xcplaygroundpages(preamble, page_names, page_contents)
+      page_dir_names = page_names.map { |p| "#{p}.playgroundpage" }
+
+      {
+        page_dir_names: page_dir_names,
+        page_names: page_names,
+        page_contents: page_contents,
+        preamble: preamble
+      }
+    end
   end
 end
