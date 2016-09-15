@@ -44,20 +44,18 @@ module Playgroundbook
       # TODO: Validate YAML contents?
       begin
         parsed_chapters = book["chapters"].map do |chapter|
+          source_names = Dir["#{chapter}.playground/Sources/*.swift"]
           single_page_file = "#{chapter}.playground/Contents.swift"
-          multiple_pages = "#{chapter}.playground/Pages/*.xcplaygroundpage"
           if File.exist?(single_page_file)
             c = File.read(single_page_file)
-            page_parser.parse_chapter_pages(c)
+            page_parser.parse_chapter_pages(c, source_names)
           elsif !Dir.glob("#{chapter}.playground/Pages/*.xcplaygroundpage").empty?
-            preamble_file = "#{chapter}.playground/Sources/Preamble.swift"
-            preamble = File.exist?(preamble_file) ? File.read(preamble_file) : ""
             toc = Nokogiri::XML(File.read("#{chapter}.playground/contents.xcplayground"))
             page_names = toc.xpath("//page").map { |p| p["name"] }
             page_contents = page_names.map do |p|
               File.read("#{chapter}.playground/Pages/#{p}.xcplaygroundpage/Contents.swift")
             end
-            page_parser.parse_chapter_xcplaygroundpages(preamble, page_names, page_contents)
+            page_parser.parse_chapter_xcplaygroundpages(page_names, page_contents, source_names)
           else
             raise "Missing valid playground for #{chapter}."
           end

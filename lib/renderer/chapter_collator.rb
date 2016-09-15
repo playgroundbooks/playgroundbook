@@ -1,4 +1,5 @@
 require "plist"
+require "fileutils"
 require "renderer/page_writer"
 
 module Playgroundbook
@@ -31,6 +32,7 @@ module Playgroundbook
 
         write_chapter_manifest(chapter_name, parsed_chapter[:page_dir_names])
         write_preamble(parsed_chapter[:preamble])
+        write_sources(parsed_chapter[:source_names])
       end
     end
 
@@ -53,6 +55,14 @@ module Playgroundbook
         File.open(PreambleFileName, "w") do |file|
           file.write(preamble)
         end
+      end
+    end
+
+    def write_sources(source_names)
+      Dir.mkdir(SharedSourcesDirectoryName) unless Dir.exist?(SharedSourcesDirectoryName)
+
+      source_names.each do |source|
+        FileUtils.cp("../../../../#{source}", SharedSourcesDirectoryName)
       end
     end
   end
