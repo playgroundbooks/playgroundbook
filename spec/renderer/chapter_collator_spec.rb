@@ -37,8 +37,8 @@ module Playgroundbook
     end
 
     it "calls the page_writer for each page" do
-      expect(page_writer).to receive(:write_page).with("Page 1", "Page 1.playgroundpage", [], "str = \"Yo, it's page 1.\"\nsharedFunc()")
-      expect(page_writer).to receive(:write_page).with("Page 2", "Page 2.playgroundpage", [], "str = \"Page 2 awww yeah.\"\nsharedFunc()")
+      expect(page_writer).to receive(:write_page).with("Page 1", "Page 1.playgroundpage", [], "str = \"Yo, it's page 1.\"\nsharedFunc()", [], [])
+      expect(page_writer).to receive(:write_page).with("Page 2", "Page 2.playgroundpage", [], "str = \"Page 2 awww yeah.\"\nsharedFunc()", [], [])
 
       collator.collate(chapter_name, parsed_chapter, [])
     end

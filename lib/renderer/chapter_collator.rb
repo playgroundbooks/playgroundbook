@@ -27,14 +27,17 @@ module Playgroundbook
             page_contents = parsed_chapter[:page_contents][index]
             page_dir_name = parsed_chapter[:page_dir_names][index]
 
-            @page_writer.write_page(page_name, page_dir_name, imports, page_contents)
+            page_source_names = parsed_chapter[:page_source_names][index]
+            page_resource_names = parsed_chapter[:page_resource_names][index]
+
+            @page_writer.write_page(page_name, page_dir_name, imports, page_contents, page_source_names, page_resource_names)
           end
         end
 
         write_chapter_manifest(chapter_name, parsed_chapter[:page_dir_names])
         write_preamble(parsed_chapter[:preamble])
-        write_sources(parsed_chapter[:source_names])
-        write_resources(parsed_chapter[:resource_names])
+        copy_sources(parsed_chapter[:source_names])
+        copy_resources(parsed_chapter[:resource_names])
       end
     end
 
@@ -60,7 +63,7 @@ module Playgroundbook
       end
     end
 
-    def write_sources(source_names)
+    def copy_sources(source_names)
       Dir.mkdir(SharedSourcesDirectoryName) unless Dir.exist?(SharedSourcesDirectoryName)
 
       source_names.each do |source|
@@ -68,7 +71,7 @@ module Playgroundbook
       end
     end
 
-    def write_resources(resource_names)
+    def copy_resources(resource_names)
       Dir.mkdir(SharedResourcesDirectoryName) unless Dir.exist?(SharedResourcesDirectoryName)
 
       resource_names.each do |resource|

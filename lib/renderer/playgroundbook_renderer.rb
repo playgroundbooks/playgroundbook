@@ -53,10 +53,15 @@ module Playgroundbook
           elsif !Dir.glob("#{chapter}.playground/Pages/*.xcplaygroundpage").empty?
             toc = Nokogiri::XML(File.read("#{chapter}.playground/contents.xcplayground"))
             page_names = toc.xpath("//page").map { |p| p["name"] }
-            page_contents = page_names.map do |p|
-              File.read("#{chapter}.playground/Pages/#{p}.xcplaygroundpage/Contents.swift")
+            pages_data = page_names.map do |p|
+              {
+                name: p,
+                contents: File.read("#{chapter}.playground/Pages/#{p}.xcplaygroundpage/Contents.swift"),
+                sources: Dir["#{chapter}.playground/Pages/#{p}.xcplaygroundpage/Sources/*.swift"],
+                resources: Dir["#{chapter}.playground/Pages/#{p}.xcplaygroundpage/Resources/*"]
+              }
             end
-            page_parser.parse_chapter_xcplaygroundpages(page_names, page_contents, source_names, resource_names)
+            page_parser.parse_chapter_xcplaygroundpages(pages_data, source_names, resource_names)
           else
             raise "Missing valid playground for #{chapter}."
           end
