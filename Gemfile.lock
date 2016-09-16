@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    playgroundbook (0.3.0)
+    playgroundbook (0.4.0)
       colored (~> 1.2)
       cork (~> 0.1)
       plist (~> 3.2)
@@ -100,6 +100,3 @@ DEPENDENCIES
   prettybacon
   rake
   rubocop (~> 0.41.2)
-
-BUNDLED WITH
-   1.12.5
