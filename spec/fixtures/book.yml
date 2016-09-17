@@ -3,4 +3,4 @@ identifier: com.ashfurrow.example
 resources: assets
 cover: file.jpeg
 chapters:
-  - test_chapter
+  - name: test_chapter
