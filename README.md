@@ -150,6 +150,28 @@ Beginners/Lesson\ One
 
 You might notice that a subset of images, have moved well, they're the only one being used in the `README.md`. Slick huh?
 
+
+Contributing
+------------
+
+Hey! Like this tool? Awesome! We could actually really use your help!
+
+Open source isn't just writing code. We could use your help with any of the
+following:
+
+- Finding (and reporting!) bugs.
+- New feature suggestions.
+- Answering questions on issues.
+- Reviewing pull requests.
+- Helping to manage issue priorities.
+- Fixing bugs/new features.
+
+If any of that sounds cool to you, send a pull request! After a few
+contributions, we'll add you as an admin to the repo so you can merge pull
+requests and help steer the ship :ship: You can read more details about that [in our contributor guidelines](https://github.com/playgroundbooks/playgroundbook/blob/master/Community.md).
+
+Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by [its terms](https://github.com/playgroundbooks/playgroundbook/blob/master/Code of Conduct.md).
+
 ## License
 
 MIT, except for the `starter.playgroundbook` in the unit tests, which is licensed by Apple.
