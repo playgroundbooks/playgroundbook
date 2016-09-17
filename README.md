@@ -128,7 +128,7 @@ You can run:
 playgroundbook wrapper "Beginners/Lesson\ One/README.md" "Lesson One"
 ```
 
-And it will switch out swift codeblocks into the playground. You _have_ to use  triple backticks with swift <code>```swift</code>. No space between them.
+And it will switch out swift codeblocks into the playground. You _have_ to use  triple backticks with swift <code>```swift</code>. No space between them. You should avoid using backtick blocks for anything other than Swift code, if you need to show examples, [use Markdown's indentation rules](https://guides.github.com/features/mastering-markdown/#GitHub-flavored-markdown) with four spaces.
 
 ```sh
 > tree Beginners/Lesson\ One

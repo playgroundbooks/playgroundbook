@@ -24,7 +24,7 @@ module Playgroundbook
     end
 
     def swap_code_context(file_content)
-      prefix = "/*:\n"
+      prefix = "import Foundation\n/*:\n"
       suffix = "*/"
       content = file_content.gsub("```swift", "*/\n").gsub("```", "/*:")
       prefix + content + suffix
