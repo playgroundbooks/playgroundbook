@@ -1,3 +1,4 @@
+import Foundation
 /*:
 (Note: a screen recording of a presentation of this material is [available on YouTube](https://github.com/artsy/Swift-at-Artsy/tree/master/Beginners/Lesson%20One).)
 
