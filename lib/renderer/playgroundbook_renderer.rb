@@ -43,7 +43,7 @@ module Playgroundbook
       # TODO: Validate YAML contents?
       begin
         book_chapter_contents = book["chapters"].map do |chapter|
-          File.read("#{chapter}.playground/Contents.swift")
+          File.read("#{chapter['name']}.playground/Contents.swift")
         end
       rescue => e
         ui.puts "Failed to open playground Contents.swift file."

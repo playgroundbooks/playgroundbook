@@ -2,7 +2,7 @@
 
 # playgroundbook
 
-A series of tools for Swift Playground and Playground books based on [Apple's documentation](https://developer.apple.com/library/prerelease/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/index.html#//apple_ref/doc/uid/TP40017343-CH47-SW4). 
+A series of tools for Swift Playground and Playground books based on [Apple's documentation](https://developer.apple.com/library/prerelease/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/index.html#//apple_ref/doc/uid/TP40017343-CH47-SW4).
 
 It's a work in progress (see [issues](https://github.com/ashfurrow/playground-book-lint/issues)) but you can use it now.
 
@@ -34,12 +34,14 @@ identifier: com.ashfurrow.example
 resources: assets # Optional
 cover: cover.jpeg # Optional
 deployment_target: ios10.0 # Optional
-imports: # Optional, defaults to UIKit 
+imports: # Optional, defaults to UIKit
  - UIKit
  - CoreGraphics
 chapters:
-  - Chapter 1
-  - Chapter 2
+  - name: Chapter 1
+    edge_to_edge_live_view: false # defaults to true
+    live_view_mode: "VisibleByDefault" # defaults to "HiddenByDefault"
+  - name: Chapter 2
   - etc...
 glossary:
   term: definition
@@ -96,7 +98,7 @@ public var layout: UICollectionViewFlowLayout = {
 }()
 ```
 
-It's awkward; if you have suggestions, open an issue :+1: 
+It's awkward; if you have suggestions, open an issue :+1:
 
 Sharing resources is only available book-wide and not specific to chapters. Sharing code outside the preamble isn't supported yet.
 
