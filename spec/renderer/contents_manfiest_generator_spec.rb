@@ -30,7 +30,7 @@ module Playgroundbook
       end
 
       it "has chapters specified" do
-        expect(get_manifest["Chapters"]).to eq(["{\"name\"=>\"test_chapter\"}.playgroundchapter"])
+        expect(get_manifest["Chapters"]).to eq(["test_chapter.playgroundchapter"])
       end
 
       it "has a ImageReference" do

@@ -19,7 +19,7 @@ module Playgroundbook
     end
 
     def manifest_contents(book_metadata)
-      chapters = book_metadata["chapters"].map { |c| "#{c}.playgroundchapter" }
+      chapters = book_metadata["chapters"].map { |c| "#{c["name"]}.playgroundchapter" }
       manifest_contents = {
         "Name" => book_metadata["name"],
         "ContentIdentifier" => book_metadata["identifier"],
