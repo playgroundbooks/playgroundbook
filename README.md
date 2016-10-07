@@ -55,54 +55,11 @@ Each chapter needs to have a corresponding playground; so `Chapter 1` requires t
 
 Only the link to the term must be URL encoded. For example, the term "reuse identifier" would be defined in the yaml as `reuse identifier` but linked to as `glossary://reuse%20identifier`.  
 
-Each chapter needs to be in the following format:
-
-```swift
-// This is the preamble that is shared among all the pages within this chapter.
-
-public var str = "Hi!"
-
-public func sharedFunc() {
-  print("This should be accessible to all pages.")
-}
-
-//// Page 1
-
-str = "Yo, it's page 1."
-sharedFunc()
-
-//// Page 2
-
-sharedFunc()
-str = "Page 2 awww yeah."
-```
-
-Pages are divided by lines beginning with a quadruple slash, followed by that pages name.
+Each page in a chapter's `.playground` will be a separate page in the `.playgroundbook` and it's `Source`. The contents of the `Source` and `Resource` folders for each chapter and each page are copied.  
 
 ### Limitations of Book Rendering
 
-Preamble (anything about the first `////` page) is put in its own file. That means declarations there need to be `public` to be visible within individual pages (even though when you're writing, everything is in one file). Additionally, the preamble is at the top-level and can't contain expressions. This would cause a compiler error in the Swift Playrounds iPad app:
-
-```swift
-public let layout = UICollectionViewFlowLayout()
-layout.itemSize = CGSize(width: 20, height: 20)
-```
-
-Instead, you have to wrap it in a closure, like this:
-
-```swift
-public var layout: UICollectionViewFlowLayout = {
-    let layout = UICollectionViewFlowLayout()
-    layout.itemSize = CGSize(width: 20, height: 20)
-    return layout
-}()
-```
-
-It's awkward; if you have suggestions, open an issue :+1:
-
-Sharing resources is only available book-wide and not specific to chapters. Sharing code outside the preamble isn't supported yet.
-
-Playground books support a rich set of awesome features to make learning how to code really easy, and this tool uses almost none of them. It sacrifices this experience for the sake of being able to easily write the books on your Mac.
+Playground books support a rich set of awesome features to make learning how to code really easy, and this tool only scratches the surface. Read over the [Playground Book reference](https://developer.apple.com/library/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/) to see all the available options. If you have suggestions, please open an issue :+1:
 
 ### Creating a Playground from markdown
 
