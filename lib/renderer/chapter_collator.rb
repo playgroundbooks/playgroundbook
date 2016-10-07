@@ -13,7 +13,8 @@ module Playgroundbook
       @ui = ui
     end
 
-    def collate(chapter_name, parsed_chapter, imports)
+    def collate(chapter, parsed_chapter, imports)
+      chapter_name = chapter['name']
       @ui.puts "Processing #{chapter_name.green}."
 
       chapter_directory_name = "#{chapter_name}.playgroundchapter"
@@ -30,7 +31,7 @@ module Playgroundbook
             page_source_names = parsed_chapter[:page_source_names][index]
             page_resource_names = parsed_chapter[:page_resource_names][index]
 
-            @page_writer.write_page(page_name, page_dir_name, imports, page_contents, page_source_names, page_resource_names)
+            @page_writer.write_page(page_name, page_dir_name, imports, page_contents, page_source_names, page_resource_names, chapter)
           end
         end
 

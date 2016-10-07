@@ -3,6 +3,7 @@ require "cork"
 require "rspec"
 require "plist"
 require "fileutils"
+require "tmpdir"
 require "fakefs/spec_helpers"
 
 ROOT = Pathname.new(File.expand_path("../../", __FILE__))
@@ -45,7 +46,7 @@ end
 def test_book_metadata
   {
     "name" => "Testing Book",
-    "chapters" => ["test_chapter"],
+    "chapters" => [ "name" => "test_chapter"],
     "identifier" => "com.ashfurrow.testing",
     "resources" => "assets",
     "cover" => "file.jpeg",

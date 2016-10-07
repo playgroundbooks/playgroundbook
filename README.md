@@ -1,8 +1,8 @@
-[![CircleCI](https://circleci.com/gh/ashfurrow/playgroundbook.svg?style=svg)](https://circleci.com/gh/ashfurrow/playgroundbook)
+[![CircleCI](https://circleci.com/gh/playgroundbooks/playgroundbook.svg?style=svg)](https://circleci.com/gh/playgroundbooks/playgroundbook)
 
 # playgroundbook
 
-A series of tools for Swift Playground and Playground books based on [Apple's documentation](https://developer.apple.com/library/prerelease/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/index.html#//apple_ref/doc/uid/TP40017343-CH47-SW4). 
+A series of tools for Swift Playground and Playground books based on [Apple's documentation](https://developer.apple.com/library/prerelease/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/index.html#//apple_ref/doc/uid/TP40017343-CH47-SW4).
 
 It's a work in progress (see [issues](https://github.com/ashfurrow/playground-book-lint/issues)) but you can use it now.
 
@@ -34,12 +34,14 @@ identifier: com.ashfurrow.example
 resources: assets # Optional
 cover: cover.jpeg # Optional
 deployment_target: ios10.0 # Optional
-imports: # Optional, defaults to UIKit 
+imports: # Optional, defaults to UIKit
  - UIKit
  - CoreGraphics
 chapters:
-  - Chapter 1
-  - Chapter 2
+  - name: Chapter 1
+    edge_to_edge_live_view: false # defaults to true
+    live_view_mode: "VisibleByDefault" # defaults to "HiddenByDefault"
+  - name: Chapter 2
   - etc...
 glossary:
   term: definition
@@ -96,7 +98,7 @@ public var layout: UICollectionViewFlowLayout = {
 }()
 ```
 
-It's awkward; if you have suggestions, open an issue :+1: 
+It's awkward; if you have suggestions, open an issue :+1:
 
 Sharing resources is only available book-wide and not specific to chapters. Sharing code outside the preamble isn't supported yet.
 
@@ -128,7 +130,7 @@ You can run:
 playgroundbook wrapper "Beginners/Lesson\ One/README.md" "Lesson One"
 ```
 
-And it will switch out swift codeblocks into the playground. You _have_ to use  triple backticks with swift <code>```swift</code>. No space between them.
+And it will switch out swift codeblocks into the playground. You _have_ to use  triple backticks with swift <code>```swift</code>. No space between them. You should avoid using backtick blocks for anything other than Swift code, if you need to show examples, [use Markdown's indentation rules](https://guides.github.com/features/mastering-markdown/#GitHub-flavored-markdown) with four spaces.
 
 ```sh
 > tree Beginners/Lesson\ One
@@ -149,6 +151,28 @@ Beginners/Lesson\ One
 ```
 
 You might notice that a subset of images, have moved well, they're the only one being used in the `README.md`. Slick huh?
+
+
+Contributing
+------------
+
+Hey! Like this tool? Awesome! We could actually really use your help!
+
+Open source isn't just writing code. We could use your help with any of the
+following:
+
+- Finding (and reporting!) bugs.
+- New feature suggestions.
+- Answering questions on issues.
+- Reviewing pull requests.
+- Helping to manage issue priorities.
+- Fixing bugs/new features.
+
+If any of that sounds cool to you, send a pull request! After a few
+contributions, we'll add you as an admin to the repo so you can merge pull
+requests and help steer the ship :ship: You can read more details about that [in our contributor guidelines](https://github.com/playgroundbooks/playgroundbook/blob/master/Community.md).
+
+Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by [its terms](https://github.com/playgroundbooks/playgroundbook/blob/master/Code of Conduct.md).
 
 ## License
 
