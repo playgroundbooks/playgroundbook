@@ -1,5 +1,7 @@
 # Current Master
 
+# 0.5.0
+
 - Embeds images inside the local Playground when converting from markdown. See [#30](https://github.com/ashfurrow/playgroundbook/pull/30).
 
 # 0.4.0
