@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Ash Furrow"]
   s.homepage	= "https://github.com/ashfurrow/playground-book-lint"
   s.email       = "ash@ashfurrow.com"
-  s.files       = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
+  s.files       = Dir.glob("{bin,lib}/**/*") + %w(LICENSE README.md)
   s.require_paths = ["lib"]
   s.executables = ["playgroundbook"]
   s.add_runtime_dependency "plist", "~> 3.2"
