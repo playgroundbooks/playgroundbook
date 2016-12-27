@@ -56,6 +56,10 @@ module Playgroundbook
         Dir.mkdir(ContentsDirectoryName) unless Dir.exist?(ContentsDirectoryName)
         Dir.chdir(ContentsDirectoryName) do
           Dir.mkdir(ResourcesDirectoryName) unless Dir.exist?(ResourcesDirectoryName) # Always create a Resources dir, even if empty.
+          Dir.mkdir(SourcesDirectoryName) unless Dir.exist?(SourcesDirectoryName)
+          Dir.glob("../../Packages/**/Sources/*.swift").each do |file|
+            FileUtils.cp(file, SourcesDirectoryName)
+          end
           resources_dir = book["resources"]
           unless resources_dir.nil? || resources_dir.empty?
             @ui.puts "Copying resource directory (#{resources_dir.green}) contents."
