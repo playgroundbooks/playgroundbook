@@ -7,4 +7,5 @@ module Playgroundbook
   ContentsSwiftFileName = "Contents.swift".freeze
   ResourcesDirectoryName = "Resources".freeze
   PagesDirectoryName = "Pages".freeze
+  SourcesDirectoryName = "Sources".freeze
 end
