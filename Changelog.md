@@ -1,5 +1,8 @@
 # Current Master
 
+# 1.0.0
+
+- Moves away from /// comments and into multi-page Xcode playgrounds for easier development. See [#34](https://github.com/playgroundbooks/playgroundbook/pull/34).
 - Adds basic support for Swift Package Manager dependencies. See [#50](https://github.com/playgroundbooks/playgroundbook/pull/50).
 
 # 0.5.0
