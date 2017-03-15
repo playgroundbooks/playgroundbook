@@ -2,7 +2,7 @@
 
 unless ARGV.length >= 2
   puts "You must specify either lint or render. Example usage:"
-  puts "  playgroundbook [lint|render] file_name"
+  puts "  playgroundbook [lint|render|wrapper] file_name"
   exit 1
 end
 
