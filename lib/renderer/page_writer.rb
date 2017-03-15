@@ -8,7 +8,7 @@ module Playgroundbook
       @ui = ui
     end
 
-    def write_page(page_name, page_dir_name, imports, page_contents, chapter_info={})
+    def write_page(page_name, page_dir_name, imports, page_contents, page_sources, page_resources, chapter_info={})
       Dir.mkdir(page_dir_name) unless Dir.exist?(page_dir_name)
       contents_with_import = "//#-hidden-code\n"
       contents_with_import += imports.map { |i| "import #{i}" }.join("\n") + "\n"
@@ -29,6 +29,25 @@ module Playgroundbook
             "ContentVersion" => "1.0"
           }.to_plist)
         end
+
+        copy_page_sources(page_sources)
+        copy_page_resources(page_resources)
+      end
+    end
+
+    def copy_page_sources(source_names)
+      Dir.mkdir(SharedSourcesDirectoryName) unless Dir.exist?(SharedSourcesDirectoryName)
+
+      source_names.each do |source|
+        FileUtils.cp("../../../../../../#{source}", SharedSourcesDirectoryName)
+      end
+    end
+
+    def copy_page_resources(resource_names)
+      Dir.mkdir(SharedResourcesDirectoryName) unless Dir.exist?(SharedResourcesDirectoryName)
+
+      resource_names.each do |resource|
+        FileUtils.cp("../../../../../../#{resource}", SharedResourcesDirectoryName)
       end
     end
   end

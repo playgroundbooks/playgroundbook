@@ -2,6 +2,7 @@ require "colored"
 require "pathname"
 require "yaml"
 require "fileutils"
+require "nokogiri"
 require "renderer/contents_manifest_generator"
 require "renderer/chapter_collator"
 require "renderer/page_parser"
@@ -39,17 +40,36 @@ module Playgroundbook
 
       book = yaml_contents
       book_dir_name = "#{book['name']}.playgroundbook"
-      book_chapter_contents = []
+      parsed_chapters = []
       # TODO: Validate YAML contents?
       begin
-        book_chapter_contents = book["chapters"].map do |chapter|
-          File.read("#{chapter['name']}.playground/Contents.swift")
+        parsed_chapters = book["chapters"].map do |chapter|
+          source_names = Dir["#{chapter['name']}.playground/Sources/*.swift"]
+          resource_names = Dir["#{chapter['name']}.playground/Resources/*"]
+          single_page_file = "#{chapter['name']}.playground/Contents.swift"
+          if File.exist?(single_page_file)
+            c = File.read(single_page_file)
+            page_parser.parse_chapter_pages(c, source_names, resource_names)
+          elsif !Dir.glob("#{chapter['name']}.playground/Pages/*.xcplaygroundpage").empty?
+            toc = Nokogiri::XML(File.read("#{chapter['name']}.playground/contents.xcplayground"))
+            page_names = toc.xpath("//page").map { |p| p["name"] }
+            pages_data = page_names.map do |p|
+              {
+                name: p,
+                contents: File.read("#{chapter['name']}.playground/Pages/#{p}.xcplaygroundpage/Contents.swift"),
+                sources: Dir["#{chapter['name']}.playground/Pages/#{p}.xcplaygroundpage/Sources/*.swift"],
+                resources: Dir["#{chapter['name']}.playground/Pages/#{p}.xcplaygroundpage/Resources/*"]
+              }
+            end
+            page_parser.parse_chapter_xcplaygroundpages(pages_data, source_names, resource_names)
+          else
+            raise "Missing valid playground for #{chapter['name']}."
+          end
         end
       rescue => e
-        ui.puts "Failed to open playground Contents.swift file."
+        ui.puts "Failed to open and parse playground chapter."
         raise e
       end
-      parsed_chapters = book_chapter_contents.map { |c| page_parser.parse_chapter_pages(c) }
 
       book["chapters"].map do |chapter|
         Dir.glob("Packages/**/Sources/*.swift").each do |file|

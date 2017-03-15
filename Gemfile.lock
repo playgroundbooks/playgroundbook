@@ -39,16 +39,21 @@ GEM
     lumberjack (1.0.10)
     metaclass (0.0.4)
     method_source (0.8.2)
+    mini_portile2 (2.1.0)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
     mocha-on-bacon (0.2.2)
       mocha (>= 0.13.0)
     nenv (0.3.0)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
     notiffany (0.1.0)
       nenv (~> 0.1)
       shellany (~> 0.0)
     parser (2.3.1.2)
       ast (~> 2.2)
+    pkg-config (1.1.7)
     plist (3.2.0)
     powerpack (0.1.1)
     prettybacon (0.0.2)
@@ -96,6 +101,7 @@ DEPENDENCIES
   guard-rspec
   mocha
   mocha-on-bacon
+  nokogiri
   playgroundbook!
   prettybacon
   rake

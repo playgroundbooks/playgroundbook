@@ -6,7 +6,7 @@ module Playgroundbook
     let(:collator) { ChapterCollator.new(page_writer, test_ui) }
     let(:page_writer) { double(PageWriter) }
     let(:test_ui) { Cork::Board.new(silent: true) }
-    let(:parsed_chapter) { PageParser.new.parse_chapter_pages(test_chapter_contents) }
+    let(:parsed_chapter) { PageParser.new.parse_chapter_pages(test_chapter_contents, [], []) }
     let(:chapter) { { 'name' => "test_chapter" } }
 
     before do
@@ -37,8 +37,8 @@ module Playgroundbook
     end
 
     it "calls the page_writer for each page" do
-      expect(page_writer).to receive(:write_page).with("Page 1", "Page 1.playgroundpage", [], "str = \"Yo, it's page 1.\"\nsharedFunc()", {"name"=>"test_chapter"})
-      expect(page_writer).to receive(:write_page).with("Page 2", "Page 2.playgroundpage", [], "str = \"Page 2 awww yeah.\"\nsharedFunc()", {"name"=>"test_chapter"})
+      expect(page_writer).to receive(:write_page).with("Page 1", "Page 1.playgroundpage", [], "str = \"Yo, it's page 1.\"\nsharedFunc()", [], [], {"name"=>"test_chapter"})
+      expect(page_writer).to receive(:write_page).with("Page 2", "Page 2.playgroundpage", [], "str = \"Page 2 awww yeah.\"\nsharedFunc()", [], [], {"name"=>"test_chapter"})
 
       collator.collate(chapter, parsed_chapter, [])
     end
@@ -47,7 +47,7 @@ module Playgroundbook
       expect { collator.collate(chapter, parsed_chapter, []) }.to_not raise_error
     end
 
-    context "having colated" do
+    context "having collated" do
       before do
         collator.collate(chapter, parsed_chapter, [])
       end
