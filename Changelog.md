@@ -1,5 +1,9 @@
 # Current Master
 
+# 1.1.0
+
+- Fixes problem parsing playgrounds pages.
+
 # 1.0.0
 
 - Moves away from /// comments and into multi-page Xcode playgrounds for easier development. See [#34](https://github.com/playgroundbooks/playgroundbook/pull/34).
