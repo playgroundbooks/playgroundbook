@@ -1,5 +1,9 @@
 # Current Master
 
+- Adds basic support for Swift Package Manager dependencies. See [#50](https://github.com/playgroundbooks/playgroundbook/pull/50).
+
+# 0.5.0
+
 - Embeds images inside the local Playground when converting from markdown. See [#30](https://github.com/ashfurrow/playgroundbook/pull/30).
 
 # 0.4.0
