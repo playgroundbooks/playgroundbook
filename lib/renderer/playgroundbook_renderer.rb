@@ -51,11 +51,22 @@ module Playgroundbook
       end
       parsed_chapters = book_chapter_contents.map { |c| page_parser.parse_chapter_pages(c) }
 
+      book["chapters"].map do |chapter|
+        Dir.glob("Packages/**/Sources/*.swift").each do |file|
+           playground_sources_path = "#{chapter['name']}.playground/Sources"
+           Dir.mkdir(playground_sources_path) unless Dir.exist?(playground_sources_path)
+           FileUtils.cp(file, playground_sources_path)
+         end
+      end
       Dir.mkdir(book_dir_name) unless Dir.exist?(book_dir_name)
       Dir.chdir(book_dir_name) do
         Dir.mkdir(ContentsDirectoryName) unless Dir.exist?(ContentsDirectoryName)
         Dir.chdir(ContentsDirectoryName) do
           Dir.mkdir(ResourcesDirectoryName) unless Dir.exist?(ResourcesDirectoryName) # Always create a Resources dir, even if empty.
+          Dir.mkdir(SourcesDirectoryName) unless Dir.exist?(SourcesDirectoryName)
+          Dir.glob("../../Packages/**/Sources/*.swift").each do |file|
+            FileUtils.cp(file, SourcesDirectoryName)
+          end
           resources_dir = book["resources"]
           unless resources_dir.nil? || resources_dir.empty?
             @ui.puts "Copying resource directory (#{resources_dir.green}) contents."

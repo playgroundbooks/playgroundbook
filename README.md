@@ -81,7 +81,7 @@ Pages are divided by lines beginning with a quadruple slash, followed by that pa
 
 ### Limitations of Book Rendering
 
-Preamble (anything about the first `////` page) is put in its own file. That means declarations there need to be `public` to be visible within individual pages (even though when you're writing, everything is in one file). Additionally, the preamble is at the top-level and can't contain expressions. This would cause a compiler error in the Swift Playrounds iPad app:
+The preamble (anything about the first `////` page) is put in its own file. That means declarations there need to be `public` to be visible within individual pages (even though when you're writing, everything is in one file). Additionally, the preamble is at the top-level and can't contain expressions. This would cause a compiler error in the Swift Playrounds iPad app:
 
 ```swift
 public let layout = UICollectionViewFlowLayout()
@@ -101,6 +101,12 @@ public var layout: UICollectionViewFlowLayout = {
 It's awkward; if you have suggestions, open an issue :+1:
 
 Sharing resources is only available book-wide and not specific to chapters. Sharing code outside the preamble isn't supported yet.
+
+#### Using Swift Package Manager Dependencies
+
+If you place a `Package.swift` file next to your playgroundbook manifest used for rendering a book and run `swift package fetch` to fetch the corresponding sources into `Packages/`, these will be copied into the playground book's top-level `Sources` when building and available in the finished book.
+These source files will also be copied into the original playground for each chapter to make these available for use in Xcode.
+Please note that this will work best with SPM packages containing pure Swift.
 
 Playground books support a rich set of awesome features to make learning how to code really easy, and this tool uses almost none of them. It sacrifices this experience for the sake of being able to easily write the books on your Mac.
 
