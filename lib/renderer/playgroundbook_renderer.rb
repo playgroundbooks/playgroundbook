@@ -51,8 +51,10 @@ module Playgroundbook
             c = File.read(single_page_file)
             page_parser.parse_chapter_pages(c, source_names, resource_names)
           elsif !Dir.glob("#{chapter['name']}.playground/Pages/*.xcplaygroundpage").empty?
-            toc = Nokogiri::XML(File.read("#{chapter['name']}.playground/contents.xcplayground"))
-            page_names = toc.xpath("//page").map { |p| p["name"] }
+            page_names = Dir.glob("#{chapter['name']}.playground/Pages/*.xcplaygroundpage").map do |name|
+              # Transforms 'Chapter One.playground/Pages/Untitled Page.xcplaygroundpage' into 'Untitled Page'
+              name.split('/').last.split('.').first
+            end
             pages_data = page_names.map do |p|
               {
                 name: p,
