@@ -47,7 +47,23 @@ glossary:
   term: definition
 ```
 
-Each chapter needs to have a corresponding playground; so `Chapter 1` requires there be a `Chapter 1.playground` playground. The playgrounds can reference (not copy) resources from an optionally specified directory. `import` frameworks are specified in the yaml file and are added to every page of the book. You can specify a cover image file name that's stored in the `resources` directory (it should be 400x300 pixels). Finally, you can supply a glossary, a dictionary of term/definition pairs. This lets you link to terms in markdown. For example:
+Each chapter needs to have a corresponding playground; so `Chapter 1` requires there be a `Chapter 1.playground` playground. Your directory should look like this:
+
+![](web/finder.png)
+
+Once you've created a playground for each _chapter_, it's time to add pages to your playgrounds. You can do this in Xcode.
+
+![](web/xcode.png)
+
+Note that the order of the pages is determined by the ordering of the filesystem, which is lexicographical. You also can't have any periods in your pages.
+
+Then run the `render` command in the directory containing the yaml file.
+
+```sh
+playgroundbook render book.yaml
+```
+
+The playgrounds can reference (not copy) resources from an optionally specified directory. `import` frameworks are specified in the yaml file and are added to every page of the book. You can specify a cover image file name that's stored in the `resources` directory (it should be 400x300 pixels). Finally, you can supply a glossary, a dictionary of term/definition pairs. This lets you link to terms in markdown. For example:
 
 ```md
 ... [term](glossary://term) ...
