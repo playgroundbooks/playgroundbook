@@ -60,13 +60,6 @@ Each page in a chapter's `.playground` will be a separate page in the `.playgrou
 ### Limitations of Book Rendering
 
 Playground books support a rich set of awesome features to make learning how to code really easy, and this tool only scratches the surface. Read over the [Playground Book reference](https://developer.apple.com/library/content/documentation/Xcode/Conceptual/swift_playgrounds_doc_format/) to see all the available options. If you have suggestions, please open an issue :+1:
-=======
-The preamble (anything about the first `////` page) is put in its own file. That means declarations there need to be `public` to be visible within individual pages (even though when you're writing, everything is in one file). Additionally, the preamble is at the top-level and can't contain expressions. This would cause a compiler error in the Swift Playrounds iPad app:
-
-```swift
-public let layout = UICollectionViewFlowLayout()
-layout.itemSize = CGSize(width: 20, height: 20)
-```
 
 ### Creating a Playground from markdown
 
