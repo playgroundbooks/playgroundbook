@@ -110,7 +110,10 @@ module Playgroundbook
 
         unless book["glossary"].nil?
           @ui.puts "Generating glossary."
-          @glossary_generator.generate(parsed_chapters, book["chapters"], book["glossary"])
+          @glossary_generator.generate(
+            parsed_chapters,
+            book["chapters"].map { |c| c["name"] },
+            book["glossary"])
         end
       end
     end
