@@ -27,8 +27,8 @@ module Playgroundbook
             break
           end
 
-          # Break if we found the first user.
-          break unless glossary_plist["Terms"][term]["FirstUse"].empty?
+          # Break if we found the first use.
+          break unless glossary_plist["Terms"][term]["FirstUse"].nil?
         end
       end
 
