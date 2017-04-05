@@ -2,6 +2,10 @@
 
 # 1.1.0
 
+- Fixes a problem with glossaries.
+
+# 1.1.0
+
 - Fixes problem parsing playgrounds pages.
 
 # 1.0.0
