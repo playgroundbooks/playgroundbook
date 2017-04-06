@@ -47,6 +47,8 @@ glossary:
   term: definition
 ```
 
+Note that you can't use tabs when indenting in the .yaml file.  Everything needs to have spaces in order to work properly.  Otherwise you will end up with `parse` errors.
+
 Each chapter needs to have a corresponding playground; so `Chapter 1` requires there be a `Chapter 1.playground` playground. Your directory should look like this:
 
 ![](web/finder.png)
