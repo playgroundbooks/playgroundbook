@@ -50,6 +50,7 @@ def test_book_metadata
     "identifier" => "com.ashfurrow.testing",
     "resources" => "assets",
     "cover" => "file.jpeg",
+    "swift_version" => "4.0",
     "glossary" => [
       {
         "term" => "definition"

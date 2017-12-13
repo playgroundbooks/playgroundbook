@@ -36,6 +36,10 @@ module Playgroundbook
       it "has a ImageReference" do
         expect(get_manifest["ImageReference"]).to eq("file.jpeg")
       end
+
+      it "has a Swift version" do
+        expect(get_manifest["SwiftVersion"]).to eq("4.0")
+      end
     end
   end
 end
