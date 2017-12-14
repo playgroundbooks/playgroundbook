@@ -1,6 +1,7 @@
 # Current Master
 
 - Updates Rubocop again.
+- Updates Nokogiri.
 
 # 1.2.0
 
