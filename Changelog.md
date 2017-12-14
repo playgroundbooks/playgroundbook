@@ -1,5 +1,7 @@
 # Current Master
 
+- Updates Rubocop.
+
 # 1.1.0
 
 - Fixes a problem with glossaries.
