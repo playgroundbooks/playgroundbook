@@ -1,5 +1,7 @@
 # Current Master
 
+- Updates Rubocop again.
+
 # 1.2.0
 
 - Adds `swift-version` specifier to yaml manifest. See [#60](https://github.com/playgroundbooks/playgroundbook/pull/60).
