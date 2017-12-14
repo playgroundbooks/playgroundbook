@@ -29,6 +29,7 @@ module Playgroundbook
         "ContentVersion" => "1.0"
       }
       manifest_contents["ImageReference"] = book_metadata["cover"] unless book_metadata["cover"].nil?
+      manifest_contents["SwiftVersion"] = book_metadata["swift_version"] unless book_metadata["swift_version"].nil?
       manifest_contents
     end
   end
